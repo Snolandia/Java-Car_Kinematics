@@ -7,11 +7,11 @@
     -fx-font-family: "Tahoma";
     -fx-base: #DFB951;
     -fx-background: #A78732;
-    -fx-background-color: #A11422;
+    -fx-background-color: #d1fdff;
     -fx-focus-color: #B6A678;
 }
 
-.button{
+.vbox{
     -fx-text-fill: #006464;
     -fx-background: #A71732;
     -fx-background-color: #1AE951;
