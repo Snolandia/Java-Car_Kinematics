@@ -1,4 +1,4 @@
-package application;
+package values;
 
 public class Variants {
 	
