@@ -5,6 +5,21 @@ public class Calculated  {
 	double camber = 0;
 	double castor = 0;
 	double toe = 0;
+	double[][] innerPoints = {
+			{0,0,0},
+			{0,0,0},
+			{0,0,0},
+			{0,0,0},
+			{0,0,0}
+	};
+	double[][] outerPoints = {
+			{0,0,0},
+			{0,0,0},
+			{0,0,0},
+			{0,0,0},
+			{0,0,0}
+	};
+	
 	// king pin inclination
 	// camber profile
 	// castor profile

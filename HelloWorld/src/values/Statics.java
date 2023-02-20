@@ -18,6 +18,7 @@ public class Statics {
 	double frontLinkCount = 0;
 	double weight = 0;
 	double[] cog = {0,0,0};
+	int linkCount = 0;
 	double[][] frontMountBox = {
 			{0,0,0},
 			{0,0,0},
