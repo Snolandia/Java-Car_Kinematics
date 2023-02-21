@@ -14,6 +14,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -29,20 +30,17 @@ public class Main extends Application {
 		try {
 			
 			BorderPane root = new BorderPane();
-						
-			
-//			MenuButton menuButton = new MenuButton("Don't touch this");
-//			menuButton.getItems().addAll(new MenuItem("Really"), new MenuItem("Do not"));
-//		
-//		    TabPane tabPane = new TabPane(); 
-//		    tabPane = TabsPane.tabAdd(tabPane);
 			
 			MenuBar menuBar = menuBarRow.menuAdd();
-//
-//		    
+
 			VBox vBox = new VBox(menuBar);
-			//vBox.getChildren().add(menuBar);
-	        Scene scene = new Scene(vBox);
+			root.setTop(vBox);
+			
+			TabPane tabPane = TabsPane.tabAdd();
+			VBox vBox1 = new VBox(tabPane);
+			root.setLeft(vBox1);
+			
+	        Scene scene = new Scene(root);
 			
 	        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
