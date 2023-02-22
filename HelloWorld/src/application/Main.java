@@ -1,5 +1,9 @@
 package application;
 	
+import java.awt.Toolkit;
+import java.io.InputStream;
+import java.net.URL;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
@@ -13,6 +17,8 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -30,7 +36,7 @@ public class Main extends Application {
 		try {
 			
 			BorderPane root = new BorderPane();
-			
+			root.setPrefSize(800,600);
 			MenuBar menuBar = menuBarRow.menuAdd();
 
 			VBox vBox = new VBox(menuBar);

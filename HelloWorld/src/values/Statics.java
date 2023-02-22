@@ -5,6 +5,13 @@ package values;
 
 public class Statics {
 	//set up variables that will not be changing once set
+	
+	String frontType = "k"; // MacPherson, 3-Link, 4-Link, 5-Link
+	String rearType = "k";  // MacPherson, 3-Link, 4-Link, 5-Link
+	int rearLinkCount = 0;  // 3,4,5
+	int frontLinkCount = 0; // 3,4,5
+	
+	
 	double wheelbase = 0;
 	double track = 0;
 	double staticCastor = 0;
@@ -14,11 +21,8 @@ public class Statics {
 	double rearRideHeight = 0;
 	double frontSuspensionTravel = 0;
 	double rearSuspensionTravel = 0;
-	double rearLinkCount = 0;
-	double frontLinkCount = 0;
 	double weight = 0;
 	double[] cog = {0,0,0};
-	int linkCount = 0;
 	double[][] frontMountBox = {
 			{0,0,0},
 			{0,0,0},

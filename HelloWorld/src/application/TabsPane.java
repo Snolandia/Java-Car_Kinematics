@@ -13,13 +13,17 @@ public class TabsPane extends Main {
 		TabPane tabPane = new TabPane();
 		
 		Tab tab1 = new Tab("Tab1", new Label("Tabby Tab1"));
-		Tab inputTab = new Tab("Inputs", new Label("Inputs1"));
+		//Tab inputTab = new Tab("Inputs", new Label("Interior"));
+		Tab inputTab = inputsTabPane.inputsadd();
 		Tab tab3 = new Tab("Tab3", new Label("Tabby Tab3"));
 		Tab tab4 = new Tab("Tab4", new Label("Tabby Tab4"));
 		
 		tabPane.getTabs().add(tab1);
+		
 		tabPane.getTabs().add(inputTab);
+		
 		tabPane.getTabs().add(tab3);
+		
 		tabPane.getTabs().add(tab4);
 		
 		tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
