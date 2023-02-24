@@ -2,6 +2,10 @@ package values;
 
 public class Variants {
 	
+	// X = Width
+	// Y = Length
+	// Z = Height
+	
 	//toe profile
 	int toeChartPoints = 0;
 	double[][] toeChartFRXY = {

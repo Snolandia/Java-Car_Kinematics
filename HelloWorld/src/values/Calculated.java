@@ -2,11 +2,31 @@ package values;
 
 public class Calculated  {
 	
+	// X = Width
+	// Y = Length
+	// Z = Height
+	
 	double camber = 0;
+	public static double camberCalc(double[][] points,int linkCount) {
+		
+		double[] groundPlane = {0,0,-8,0};
+		double[] tireAngle = generalFormulas.planeFromPoints(points,linkCount);
+		double camber = generalFormulas.angleFromPlanes(tireAngle, groundPlane);	
+		
+		return camber;
+	}
 	
 	double castor = 0;
 	
 	double toe = 0;
+	public static double toeCalc(double[][] points,int linkCount) {
+		
+		double[] widthPlane = {0,-8,0,0};
+		double[] tireAngle = generalFormulas.planeFromPoints(points,linkCount);
+		double toe = generalFormulas.angleFromPlanes(tireAngle, widthPlane);	
+		
+		return toe;
+	}
 	
 	double[][] innerPoints = {
 			{0,0,0},
@@ -15,6 +35,7 @@ public class Calculated  {
 			{0,0,0},
 			{0,0,0}
 	};
+	
 	double[][] outerPoints = {
 			{0,0,0},
 			{0,0,0},
@@ -22,11 +43,21 @@ public class Calculated  {
 			{0,0,0},
 			{0,0,0}
 	};
+	public static double[][] outerPointsCalc(double height){
+		double[][] points = new double[2][2];
+		
+		
+		return points;
+	}
 	
 	double frontRideHeight = 0;
+	
 	double rearRideHeight = 0;
-	double frontSuspensionTravel = 0;
-	double rearSuspensionTravel = 0;
+	
+	double[] frontSuspensionTravel = {0,0};
+	
+	double[] rearSuspensionTravel = {0,0};
+	
 	double weight = 0;
 	
 	

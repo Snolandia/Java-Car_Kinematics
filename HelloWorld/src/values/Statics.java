@@ -5,6 +5,9 @@ package values;
 
 public class Statics {
 	//set up variables that will not be changing once set
+	// X = Width
+	// Y = Length
+	// Z = Height
 	
 	String frontType = "k"; // MacPherson, 3-Link, 4-Link, 5-Link
 	String rearType = "k";  // MacPherson, 3-Link, 4-Link, 5-Link
