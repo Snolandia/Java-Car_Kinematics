@@ -1,3 +1,4 @@
+package application;
 /*
  * Copyright (c) 2013, 2014 Oracle and/or its affiliates.
  * All rights reserved. Use is subject to license terms.
@@ -30,8 +31,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package application;
-
 import javafx.application.Application;
 import javafx.scene.*;
 import javafx.scene.paint.Color;
@@ -49,37 +48,40 @@ import javafx.scene.input.MouseEvent;
  *
  * @author cmcastil
  */
-public abstract class MoleculeSampleApp extends Application {
+public class MoleculeSampleAppBase extends Application {
 
-	static Group root = new Group();
-	static Xform axisGroup = new Xform();
-	static  Xform moleculeGroup = new Xform();
-	static  Xform world = new Xform();
-	static  PerspectiveCamera camera = new PerspectiveCamera(true);
-	static  Xform cameraXform = new Xform();
-	static  Xform cameraXform2 = new Xform();
-	static  Xform cameraXform3 = new Xform();
-    private static double CAMERA_INITIAL_DISTANCE = -450;
-    private static  double CAMERA_INITIAL_X_ANGLE = 70.0;
-    private static  double CAMERA_INITIAL_Y_ANGLE = 320.0;
-    private static  double CAMERA_NEAR_CLIP = 0.1;
-    private static  double CAMERA_FAR_CLIP = 10000.0;
-    private static  double AXIS_LENGTH = 250.0;
-    private static  double HYDROGEN_ANGLE = 104.5;
-    private static  double CONTROL_MULTIPLIER = 0.1;
-    private static  double SHIFT_MULTIPLIER = 10.0;
-    private static  double MOUSE_SPEED = 0.1;
-    private static  double ROTATION_SPEED = 2.0;
-    private static  double TRACK_SPEED = 0.3;
+    final Group root = new Group();
+    final Xform axisGroup = new Xform();
+    final Xform moleculeGroup = new Xform();
+    final Xform world = new Xform();
+    final PerspectiveCamera camera = new PerspectiveCamera(true);
+    final Xform cameraXform = new Xform();
+    final Xform cameraXform2 = new Xform();
+    final Xform cameraXform3 = new Xform();
+    private static final double CAMERA_INITIAL_DISTANCE = -450;
+    private static final double CAMERA_INITIAL_X_ANGLE = 70.0;
+    private static final double CAMERA_INITIAL_Y_ANGLE = 320.0;
+    private static final double CAMERA_NEAR_CLIP = 0.1;
+    private static final double CAMERA_FAR_CLIP = 10000.0;
+    private static final double AXIS_LENGTH = 250.0;
+    private static final double HYDROGEN_ANGLE = 104.5;
+    private static final double CONTROL_MULTIPLIER = 0.1;
+    private static final double SHIFT_MULTIPLIER = 10.0;
+    private static final double MOUSE_SPEED = 0.1;
+    private static final double ROTATION_SPEED = 2.0;
+    private static final double TRACK_SPEED = 0.3;
     
-    static double mousePosX;
-    static double mousePosY;
-     static double mouseOldX;
-     static double mouseOldY;
-     static double mouseDeltaX;
-     static double mouseDeltaY;
+    double mousePosX;
+    double mousePosY;
+    double mouseOldX;
+    double mouseOldY;
+    double mouseDeltaX;
+    double mouseDeltaY;
     
-    private static void buildCamera() {
+    //   private void buildScene() {
+    //       root.getChildren().add(world);
+    //   }
+    private void buildCamera() {
         System.out.println("buildCamera()");
         root.getChildren().add(cameraXform);
         cameraXform.getChildren().add(cameraXform2);
@@ -94,7 +96,7 @@ public abstract class MoleculeSampleApp extends Application {
         cameraXform.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
     }
 
-    private static void buildAxes() {
+    private void buildAxes() {
         System.out.println("buildAxes()");
         final PhongMaterial redMaterial = new PhongMaterial();
         redMaterial.setDiffuseColor(Color.DARKRED);
@@ -121,8 +123,8 @@ public abstract class MoleculeSampleApp extends Application {
         world.getChildren().addAll(axisGroup);
     }
 
-    private static void handleMouse(SubScene subScene, final Node root) {
-        subScene.setOnMousePressed(new EventHandler<MouseEvent>() {
+    private void handleMouse(Scene scene, final Node root) {
+        scene.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent me) {
                 mousePosX = me.getSceneX();
                 mousePosY = me.getSceneY();
@@ -130,7 +132,7 @@ public abstract class MoleculeSampleApp extends Application {
                 mouseOldY = me.getSceneY();
             }
         });
-        subScene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+        scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent me) {
                 mouseOldX = mousePosX;
                 mouseOldY = mousePosY;
@@ -164,8 +166,8 @@ public abstract class MoleculeSampleApp extends Application {
         });
     }
     
-    private static void handleKeyboard(SubScene subScene, final Node root) {
-        subScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+    private void handleKeyboard(Scene scene, final Node root) {
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
@@ -187,8 +189,11 @@ public abstract class MoleculeSampleApp extends Application {
         });
     }
     
-    private static void buildMolecule() {
-        
+    private void buildMolecule() {
+        //======================================================================
+        // THIS IS THE IMPORTANT MATERIAL FOR THE TUTORIAL
+        //======================================================================
+
         final PhongMaterial redMaterial = new PhongMaterial();
         redMaterial.setDiffuseColor(Color.DARKRED);
         redMaterial.setSpecularColor(Color.RED);
@@ -201,6 +206,18 @@ public abstract class MoleculeSampleApp extends Application {
         greyMaterial.setDiffuseColor(Color.DARKGREY);
         greyMaterial.setSpecularColor(Color.GREY);
 
+        // Molecule Hierarchy
+        // [*] moleculeXform
+        //     [*] oxygenXform
+        //         [*] oxygenSphere
+        //     [*] hydrogen1SideXform
+        //         [*] hydrogen1Xform
+        //             [*] hydrogen1Sphere
+        //         [*] bond1Cylinder
+        //     [*] hydrogen2SideXform
+        //         [*] hydrogen2Xform
+        //             [*] hydrogen2Sphere
+        //         [*] bond2Cylinder
         Xform moleculeXform = new Xform();
         Xform oxygenXform = new Xform();
         Xform hydrogen1SideXform = new Xform();
@@ -251,7 +268,8 @@ public abstract class MoleculeSampleApp extends Application {
         world.getChildren().addAll(moleculeGroup);
     }
 
-    public static Group addMoly(Group root) {
+    @Override
+    public void start(Stage primaryStage) {
         
        // setUserAgentStylesheet(STYLESHEET_MODENA);
         System.out.println("start()");
@@ -264,17 +282,28 @@ public abstract class MoleculeSampleApp extends Application {
         buildAxes();
         buildMolecule();
 
-        SubScene subScene = new SubScene(root,400,400);
-        subScene.setFill(Color.GREY);
-        handleKeyboard(subScene, world);
-        handleMouse(subScene, world);
-        
-        Group group = new Group();
-        
-        
-        
-        subScene.setCamera(camera);
-        root.getChildren().add(subScene);
-        return group;
+        Scene scene = new Scene(root, 1024, 768, true);
+        scene.setFill(Color.GREY);
+        handleKeyboard(scene, world);
+        handleMouse(scene, world);
+
+        primaryStage.setTitle("Molecule Sample Application");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        scene.setCamera(camera);
     }
+
+    /**
+     * The main() method is ignored in correctly deployed JavaFX application.
+     * main() serves only as fallback in case the application can not be
+     * launched through deployment artifacts, e.g., in IDEs with limited FX
+     * support. NetBeans ignores main().
+     *
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
 }

@@ -47,6 +47,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Button?>
 
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"  >
   <children>
@@ -91,33 +92,37 @@
     </MenuBar>
     <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
-        <AnchorPane fx:id="rView"> 
+        
+        <AnchorPane fx:id="leftView" maxWidth="200.0"> 
           <children>
-            <Label  alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Master" textAlignment="CENTER" wrapText="false">
-              <font>
-                <Font size="18.0" fx:id="x1" />
-              </font>
-              <textFill>
-                <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
-              </textFill>
-            </Label>
+             
+            <Button text="Front Link 1" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="0.0"></Button>
+            <Button text="Front Link 2" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="30.0"></Button>
+            <Button text="Front Link 3" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="60.0"></Button>
+            <Button text="Front Link 4" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="90.0"></Button>
+            <Button text="Front Link 5" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="120.0"></Button>
+            <Button text="Rear Link 1" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="150.0"></Button>
+            <Button text="Rear Link 2" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="180.0"></Button>
+            <Button text="Rear Link 3" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="210.0"></Button>
+            <Button text="Rear Link 4" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="240.0"></Button>
+            <Button text="Rear Link 5" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="270.0"></Button>
           </children>
         </AnchorPane>
-        <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
-          <content>
-            <AnchorPane fx:id="renderView" id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
-              <children>
-              </children>
-            </AnchorPane>
-          </content>
-        </ScrollPane>
-        <AnchorPane>
+        
+        <AnchorPane fx:id="renderView" id="Content" minHeight="0.0" minWidth="100.0" prefHeight="545.0" prefWidth="430.0" >
+         <children>
+         </children>
+        </AnchorPane>
+        
+        <AnchorPane fx:id="rightView" maxWidth="200.0"> 
           <children>
-            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+             
           </children>
         </AnchorPane>
+      
       </items>
     </SplitPane>
+    
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
       <children>
         <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">

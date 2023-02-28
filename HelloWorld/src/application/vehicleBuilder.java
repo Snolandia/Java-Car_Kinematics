@@ -1,85 +1,63 @@
-/*
- * Copyright (c) 2013, 2014 Oracle and/or its affiliates.
- * All rights reserved. Use is subject to license terms.
- *
- * This file is available and licensed under the following license:
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *  - Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *  - Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the distribution.
- *  - Neither the name of Oracle nor the names of its
- *    contributors may be used to endorse or promote products derived
- *    from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
 package application;
 
-import javafx.application.Application;
-import javafx.scene.*;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
+import javafx.event.EventHandler;
+import javafx.scene.DepthTest;
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.PerspectiveCamera;
+import javafx.scene.SceneAntialiasing;
+import javafx.scene.SubScene;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Cylinder;
+import javafx.scene.shape.MeshView;
 import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 
-/**
- *
- * @author cmcastil
- */
-public abstract class MoleculeSampleApp extends Application {
+public class vehicleBuilder extends Group {
 
-	static Group root = new Group();
-	static Xform axisGroup = new Xform();
-	static  Xform moleculeGroup = new Xform();
-	static  Xform world = new Xform();
-	static  PerspectiveCamera camera = new PerspectiveCamera(true);
-	static  Xform cameraXform = new Xform();
-	static  Xform cameraXform2 = new Xform();
-	static  Xform cameraXform3 = new Xform();
-    private static double CAMERA_INITIAL_DISTANCE = -450;
-    private static  double CAMERA_INITIAL_X_ANGLE = 70.0;
-    private static  double CAMERA_INITIAL_Y_ANGLE = 320.0;
-    private static  double CAMERA_NEAR_CLIP = 0.1;
-    private static  double CAMERA_FAR_CLIP = 10000.0;
-    private static  double AXIS_LENGTH = 250.0;
-    private static  double HYDROGEN_ANGLE = 104.5;
-    private static  double CONTROL_MULTIPLIER = 0.1;
-    private static  double SHIFT_MULTIPLIER = 10.0;
-    private static  double MOUSE_SPEED = 0.1;
-    private static  double ROTATION_SPEED = 2.0;
-    private static  double TRACK_SPEED = 0.3;
+	Group group = new Group();
+	SubScene subScene;
+	final Group root = new Group();
+    final Xform axisGroup = new Xform();
+    final Xform moleculeGroup = new Xform();
+    final Xform frontSuspension = new Xform();
+    final Xform rearSuspension = new Xform();
+    final Xform world = new Xform();
+    final Xform vehicle = new Xform();
+    final PerspectiveCamera camera = new PerspectiveCamera(true);
+    final Xform cameraXform = new Xform();
+    final Xform cameraXform2 = new Xform();
+    final Xform cameraXform3 = new Xform();
+    private static final double CAMERA_INITIAL_DISTANCE = -450;
+    private static final double CAMERA_INITIAL_X_ANGLE = 70.0;
+    private static final double CAMERA_INITIAL_Y_ANGLE = 320.0;
+    private static final double CAMERA_NEAR_CLIP = 0.1;
+    private static final double CAMERA_FAR_CLIP = 10000.0;
+    private static final double AXIS_LENGTH = 250.0;
+    private static final double HYDROGEN_ANGLE = 104.5;
+    private static final double CONTROL_MULTIPLIER = 0.1;
+    private static final double SHIFT_MULTIPLIER = 10.0;
+    private static final double MOUSE_SPEED = 0.1;
+    private static final double ROTATION_SPEED = 2.0;
+    private static final double TRACK_SPEED = 0.3;
+
+    double mousePosX;
+    double mousePosY;
+    double mouseOldX;
+    double mouseOldY;
+    double mouseDeltaX;
+    double mouseDeltaY;
     
-    static double mousePosX;
-    static double mousePosY;
-     static double mouseOldX;
-     static double mouseOldY;
-     static double mouseDeltaX;
-     static double mouseDeltaY;
-    
-    private static void buildCamera() {
+    //Probably still need, or refactor
+    private void buildCamera() {
         System.out.println("buildCamera()");
         root.getChildren().add(cameraXform);
         cameraXform.getChildren().add(cameraXform2);
@@ -93,8 +71,9 @@ public abstract class MoleculeSampleApp extends Application {
         cameraXform.ry.setAngle(CAMERA_INITIAL_Y_ANGLE);
         cameraXform.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
     }
-
-    private static void buildAxes() {
+    
+    //Doubt this is needed
+    private void buildAxes() {
         System.out.println("buildAxes()");
         final PhongMaterial redMaterial = new PhongMaterial();
         redMaterial.setDiffuseColor(Color.DARKRED);
@@ -117,11 +96,12 @@ public abstract class MoleculeSampleApp extends Application {
         zAxis.setMaterial(blueMaterial);
 
         axisGroup.getChildren().addAll(xAxis, yAxis, zAxis);
-        axisGroup.setVisible(false);
-        world.getChildren().addAll(axisGroup);
+        axisGroup.setVisible(true);
+        vehicle.getChildren().addAll(axisGroup);
     }
-
-    private static void handleMouse(SubScene subScene, final Node root) {
+    
+    //Unsure about these
+    private void handleMouse(SubScene subScene, final Node root) {
         subScene.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override public void handle(MouseEvent me) {
                 mousePosX = me.getSceneX();
@@ -136,20 +116,20 @@ public abstract class MoleculeSampleApp extends Application {
                 mouseOldY = mousePosY;
                 mousePosX = me.getSceneX();
                 mousePosY = me.getSceneY();
-                mouseDeltaX = (mousePosX - mouseOldX); 
-                mouseDeltaY = (mousePosY - mouseOldY); 
-                
+                mouseDeltaX = (mousePosX - mouseOldX);
+                mouseDeltaY = (mousePosY - mouseOldY);
+
                 double modifier = 1.0;
-                
+
                 if (me.isControlDown()) {
                     modifier = CONTROL_MULTIPLIER;
-                } 
+                }
                 if (me.isShiftDown()) {
                     modifier = SHIFT_MULTIPLIER;
-                }     
+                }
                 if (me.isPrimaryButtonDown()) {
-                    cameraXform.ry.setAngle(cameraXform.ry.getAngle() - mouseDeltaX*MOUSE_SPEED*modifier*ROTATION_SPEED);  
-                    cameraXform.rx.setAngle(cameraXform.rx.getAngle() + mouseDeltaY*MOUSE_SPEED*modifier*ROTATION_SPEED);  
+                    cameraXform.ry.setAngle(cameraXform.ry.getAngle() - mouseDeltaX*MOUSE_SPEED*modifier*ROTATION_SPEED);
+                    cameraXform.rx.setAngle(cameraXform.rx.getAngle() + mouseDeltaY*MOUSE_SPEED*modifier*ROTATION_SPEED);
                 }
                 else if (me.isSecondaryButtonDown()) {
                     double z = camera.getTranslateZ();
@@ -157,14 +137,15 @@ public abstract class MoleculeSampleApp extends Application {
                     camera.setTranslateZ(newZ);
                 }
                 else if (me.isMiddleButtonDown()) {
-                    cameraXform2.t.setX(cameraXform2.t.getX() + mouseDeltaX*MOUSE_SPEED*modifier*TRACK_SPEED);  
-                    cameraXform2.t.setY(cameraXform2.t.getY() + mouseDeltaY*MOUSE_SPEED*modifier*TRACK_SPEED);  
+                    cameraXform2.t.setX(cameraXform2.t.getX() + mouseDeltaX*MOUSE_SPEED*modifier*TRACK_SPEED);
+                    cameraXform2.t.setY(cameraXform2.t.getY() + mouseDeltaY*MOUSE_SPEED*modifier*TRACK_SPEED);
                 }
             }
         });
     }
     
-    private static void handleKeyboard(SubScene subScene, final Node root) {
+    //Unsure about these
+    private  void handleKeyboard(SubScene subScene, final Node root) {
         subScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -186,15 +167,55 @@ public abstract class MoleculeSampleApp extends Application {
             }
         });
     }
+
+    private void frontLinks() {
+    	
+    	Cylinder cylinder = new Cylinder(2,30);
+    	Sphere sphere1 = new Sphere(2);
+    	sphere1.setTranslateY(15);
+    	Sphere sphere2 = new Sphere(2);
+    	sphere2.setTranslateY(-15);
+    	Xform frontLink1 = new Xform();
+    	frontLink1.getChildren().add(sphere1);
+    	frontLink1.getChildren().add(sphere2);
+    	frontLink1.getChildren().add(cylinder);
+    	Xform frontLink2 = new Xform();
+    	frontLink2.getChildren().add(sphere1);
+    	frontLink2.getChildren().add(sphere2);
+    	frontLink2.getChildren().add(cylinder);
+    	Xform frontLink3 = new Xform();
+    	frontLink3.getChildren().add(sphere1);
+    	frontLink3.getChildren().add(sphere2);
+    	frontLink3.getChildren().add(cylinder);
+    	Xform frontLink4 = new Xform();
+    	frontLink4.getChildren().add(sphere1);
+    	frontLink4.getChildren().add(sphere2);
+    	frontLink4.getChildren().add(cylinder);
+    	Xform frontLink5 = new Xform();
+    	frontLink5.getChildren().add(sphere1);
+    	frontLink5.getChildren().add(sphere2);
+    	frontLink5.getChildren().add(cylinder);
+    	frontSuspension.getChildren().add(frontLink1);
+    	frontSuspension.getChildren().add(frontLink2);
+    	frontSuspension.getChildren().add(frontLink3);
+    	frontSuspension.getChildren().add(frontLink4);
+    	frontSuspension.getChildren().add(frontLink5);
+    	vehicle.getChildren().addAll(frontSuspension);
+    }
     
-    private static void buildMolecule() {
-        
+    //Doubt this is needed
+    private void buildMolecule() {
+
         final PhongMaterial redMaterial = new PhongMaterial();
         redMaterial.setDiffuseColor(Color.DARKRED);
         redMaterial.setSpecularColor(Color.RED);
 
+        final PhongMaterial blueMaterial = new PhongMaterial();
+        blueMaterial.setDiffuseColor(Color.DARKBLUE);
+        blueMaterial.setSpecularColor(Color.BLUE);
+
         final PhongMaterial whiteMaterial = new PhongMaterial();
-        whiteMaterial.setDiffuseColor(Color.WHITE);
+        whiteMaterial.setDiffuseColor(Color.LIGHTSKYBLUE);
         whiteMaterial.setSpecularColor(Color.LIGHTBLUE);
 
         final PhongMaterial greyMaterial = new PhongMaterial();
@@ -211,16 +232,16 @@ public abstract class MoleculeSampleApp extends Application {
         Sphere oxygenSphere = new Sphere(40.0);
         oxygenSphere.setMaterial(redMaterial);
 
-        Sphere hydrogen1Sphere = new Sphere(30.0);
+        Box hydrogen1Sphere = new Box(30.0,30.0,30.0);
         hydrogen1Sphere.setMaterial(whiteMaterial);
         hydrogen1Sphere.setTranslateX(0.0);
 
         Sphere hydrogen2Sphere = new Sphere(30.0);
-        hydrogen2Sphere.setMaterial(whiteMaterial);
+        hydrogen2Sphere.setMaterial(blueMaterial);
         hydrogen2Sphere.setTranslateZ(0.0);
 
         Cylinder bond1Cylinder = new Cylinder(5, 100);
-        bond1Cylinder.setMaterial(greyMaterial);
+        bond1Cylinder.setMaterial(blueMaterial);
         bond1Cylinder.setTranslateX(50.0);
         bond1Cylinder.setRotationAxis(Rotate.Z_AXIS);
         bond1Cylinder.setRotate(90.0);
@@ -250,31 +271,55 @@ public abstract class MoleculeSampleApp extends Application {
 
         world.getChildren().addAll(moleculeGroup);
     }
-
-    public static Group addMoly(Group root) {
+    
+    public void setHeightWidth() {
+    	
+    	subScene.widthProperty().bind(((AnchorPane)group.getParent()).widthProperty());
+    	subScene.heightProperty().bind(((AnchorPane)group.getParent()).heightProperty());
+    	
+    }
+    
+    public Group addMoly() {
         
-       // setUserAgentStylesheet(STYLESHEET_MODENA);
-        System.out.println("start()");
-
-        root.getChildren().add(world);
+    	System.out.println("starting up 3d rendering window");
+        root.getChildren().add(vehicle);
         root.setDepthTest(DepthTest.ENABLE);
-
-        // buildScene();
         buildCamera();
         buildAxes();
-        buildMolecule();
+        frontLinks();
 
-        SubScene subScene = new SubScene(root,400,400);
+        subScene = new SubScene(root, 400, 400, true, SceneAntialiasing.BALANCED);
         subScene.setFill(Color.GREY);
-        handleKeyboard(subScene, world);
-        handleMouse(subScene, world);
-        
-        Group group = new Group();
-        
-        
-        
+                
+        handleKeyboard(subScene, vehicle);
+        handleMouse(subScene, vehicle);
+
         subScene.setCamera(camera);
-        root.getChildren().add(subScene);
+        group.getChildren().add(subScene);
         return group;
+    }
+    
+    public void addShape() {
+    	
+    	final PhongMaterial whiteMaterial = new PhongMaterial();
+        whiteMaterial.setDiffuseColor(Color.LIGHTSKYBLUE);
+        whiteMaterial.setSpecularColor(Color.LIGHTBLUE);
+    	
+        int xNumber = ThreadLocalRandom.current().nextInt(1, 100 + 1);
+        int yNumber = ThreadLocalRandom.current().nextInt(1, 100 + 1);
+        int rotateNumber = ThreadLocalRandom.current().nextInt(1, 360 + 1);
+        
+    	Box newBox = new Box(20,20,20);
+    	MeshView mesh = new MeshView();
+    	
+    	
+    	newBox.setMaterial(whiteMaterial);
+        newBox.setTranslateX(xNumber);
+        newBox.setTranslateY(yNumber);
+        newBox.setRotate(rotateNumber);
+        
+        vehicle.getChildren().add(newBox);
+    	
+    	
     }
 }
