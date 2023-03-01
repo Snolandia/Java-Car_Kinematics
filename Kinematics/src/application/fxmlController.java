@@ -27,6 +27,7 @@ public class fxmlController {
 	@FXML protected void spinnerChange(ActionEvent event) {
 		System.out.println("value");
 		System.out.println(spinnerF1iX.getValue());
+		//Sort of works, not really
 	}
 	
 	@FXML public void addRender() throws Exception{
@@ -35,6 +36,8 @@ public class fxmlController {
 	}
 
 	@FXML private void testing() throws Exception {
+		
+		spinnerF1iX.valueProperty().addListener((ObservableValue obs,Object oldValue,Object newValue)System.out.println("New value: "+ newValue));
 		
 		spinnerF1iX.getEditor().setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -45,25 +48,10 @@ public class fxmlController {
 			
 		});
 //		
-//		spinnerF1iX.valueProperty().addListener(new ChangeListener<Integer>() {
-//	        
-//			public void changed(ObservableValue observed) {
-//	        	System.out.println("value " + observed);
-//	    		System.out.println(spinnerF1iX.getValue());
-//	        }
-//
-//			@Override
-//			public void changed(ObservableValue<? extends Integer> arg0, Integer arg1, Integer arg2) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//	    });
+//		
 		staff.addMoly();
 		renderView.getChildren().add(staff.group);
-//		for(int i = 0;i<5;i++){
-//			staff.frontSuspension.getChildren().get(i).setTranslateX((i*10));;
-//			System.out.println(staff.frontSuspension.getChildren().get(i));
-//		}
+//		
 		staff.frontSuspension.setTranslate(0, 15, 0);
 		
 		((Xform)staff.frontSuspension.getChildren().get(0)).setTranslate(15, 0, 15);
@@ -76,13 +64,10 @@ public class fxmlController {
 		staff.frontSuspension.setTranslate(0, -15, 0);
 		
 		for(int i = 0;i<5;i++){
-			//staff.frontSuspension.getChildren().get(i).setTranslateX((i*10));;
 			System.out.println(staff.frontSuspension.getChildren().get(i));
-			//System.out.println((Xform)staff.frontSuspension.getChildren().get(i));
 		}
 		
 		staff.setHeightWidth();
-		//staff.addShape();
 		
 	}
 }
