@@ -170,31 +170,66 @@ public class vehicleBuilder extends Group {
 
     private void frontLinks() {
     	
-    	Cylinder cylinder = new Cylinder(2,30);
-    	Sphere sphere1 = new Sphere(2);
-    	sphere1.setTranslateY(15);
-    	Sphere sphere2 = new Sphere(2);
-    	sphere2.setTranslateY(-15);
+    	Cylinder cylinder1 = new Cylinder(2,30);
+    	Sphere sphere11 = new Sphere(2);
+    	sphere11.setTranslateY(15);
+    	Sphere sphere21 = new Sphere(2);
+    	sphere21.setTranslateY(-15);
+    	
     	Xform frontLink1 = new Xform();
-    	frontLink1.getChildren().add(sphere1);
-    	frontLink1.getChildren().add(sphere2);
-    	frontLink1.getChildren().add(cylinder);
+    	frontLink1.getChildren().add(sphere11);
+    	frontLink1.getChildren().add(sphere21);
+    	frontLink1.getChildren().add(cylinder1);
+    	//frontLink1.setTranslate(-15,-15,15);
+    	
+    	Cylinder cylinder2 = new Cylinder(2,30);
+    	Sphere sphere12 = new Sphere(2);
+    	sphere12.setTranslateY(15);
+    	Sphere sphere22 = new Sphere(2);
+    	sphere22.setTranslateY(-15);
+    	
     	Xform frontLink2 = new Xform();
-    	frontLink2.getChildren().add(sphere1);
-    	frontLink2.getChildren().add(sphere2);
-    	frontLink2.getChildren().add(cylinder);
+    	frontLink2.getChildren().add(sphere12);
+    	frontLink2.getChildren().add(sphere22);
+    	frontLink2.getChildren().add(cylinder2);
+    	//frontLink2.setTranslate(15,-15,15);
+    	
+    	Cylinder cylinder3 = new Cylinder(2,30);
+    	Sphere sphere13 = new Sphere(2);
+    	sphere13.setTranslateY(15);
+    	Sphere sphere23 = new Sphere(2);
+    	sphere23.setTranslateY(-15);
+    	
     	Xform frontLink3 = new Xform();
-    	frontLink3.getChildren().add(sphere1);
-    	frontLink3.getChildren().add(sphere2);
-    	frontLink3.getChildren().add(cylinder);
+    	frontLink3.getChildren().add(sphere13);
+    	frontLink3.getChildren().add(sphere23);
+    	frontLink3.getChildren().add(cylinder3);
+    	//frontLink3.setTranslate(15,-15,-15);
+    	
+    	Cylinder cylinder4 = new Cylinder(2,30);
+    	Sphere sphere14 = new Sphere(2);
+    	sphere14.setTranslateY(15);
+    	Sphere sphere24 = new Sphere(2);
+    	sphere24.setTranslateY(-15);
+    	
     	Xform frontLink4 = new Xform();
-    	frontLink4.getChildren().add(sphere1);
-    	frontLink4.getChildren().add(sphere2);
-    	frontLink4.getChildren().add(cylinder);
+    	frontLink4.getChildren().add(sphere14);
+    	frontLink4.getChildren().add(sphere24);
+    	frontLink4.getChildren().add(cylinder4);
+    	//frontLink4.setTranslate(15,15,-15);
+    	
+    	Cylinder cylinder5 = new Cylinder(2,30);
+    	Sphere sphere15 = new Sphere(2);
+    	sphere15.setTranslateY(15);
+    	Sphere sphere25 = new Sphere(2);
+    	sphere25.setTranslateY(-15);
+    	
     	Xform frontLink5 = new Xform();
-    	frontLink5.getChildren().add(sphere1);
-    	frontLink5.getChildren().add(sphere2);
-    	frontLink5.getChildren().add(cylinder);
+    	frontLink5.getChildren().add(sphere15);
+    	frontLink5.getChildren().add(sphere25);
+    	frontLink5.getChildren().add(cylinder5);
+    	//frontLink5.setTranslate(-15,-15,-15);
+    	
     	frontSuspension.getChildren().add(frontLink1);
     	frontSuspension.getChildren().add(frontLink2);
     	frontSuspension.getChildren().add(frontLink3);
@@ -202,7 +237,6 @@ public class vehicleBuilder extends Group {
     	frontSuspension.getChildren().add(frontLink5);
     	vehicle.getChildren().addAll(frontSuspension);
     }
-    
     //Doubt this is needed
     private void buildMolecule() {
 

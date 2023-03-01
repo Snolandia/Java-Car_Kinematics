@@ -122,12 +122,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1iX" min="0" max="100" initialValue="0" onChange="#spinnerChange">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1oX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -144,12 +146,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1iY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1oY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -166,12 +170,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0"  fx:id="spinnerF1iZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0"  fx:id="spinnerF1oZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -199,12 +205,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0"  fx:id="spinnerF2iX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0"  fx:id="spinnerF2oX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -221,12 +229,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF2iY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF2oY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -243,12 +253,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF2iZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF2oZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -276,12 +288,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF3iX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF3oX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -298,12 +312,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF3iY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF3oY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -320,12 +336,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF3iZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF3oZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -353,12 +371,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF4iX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF4oX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -375,12 +395,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF4iY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF4oY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -397,12 +419,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF4iZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF4oZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -430,12 +454,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF5iX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF5oX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -452,12 +478,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF5iY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF5oY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -474,12 +502,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF5iZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF5oZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -515,12 +545,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR1ix" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR1oX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -537,12 +569,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR1iY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR1oY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -559,12 +593,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR1iZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR1oZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -592,12 +628,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR2iX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR2oX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -614,12 +652,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR2iY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR2oY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -636,12 +676,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR2iZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR2oZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -669,12 +711,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR3iX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR3oX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -691,12 +735,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR3iY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR3oY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -713,12 +759,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR3iZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR3oZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -746,12 +794,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR4iX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR4oX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -768,12 +818,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR4iY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR4oY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -790,12 +842,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR4iZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR4oZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -823,12 +877,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR5iX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR5oX" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -845,12 +901,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR5iY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR5oY" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
@@ -867,12 +925,14 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR5iZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerR5oZ" min="0" max="100" initialValue="0">
+                                                	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>

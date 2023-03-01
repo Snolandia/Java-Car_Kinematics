@@ -26,12 +26,8 @@ public class Main extends Application {
 					
 			fxmlController controller = new fxmlController();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("testview.fxml"));
-			//loader.setLocation(getClass().getResource("testview.fxml"));
 			loader.setController(controller);
 			Parent rooty = loader.load();
-			
-			//System.out.println(loader.getController());
-			
 			
 			
 			Scene sc = new Scene(rooty);
@@ -40,27 +36,7 @@ public class Main extends Application {
 			primaryStage.show();
 			controller.addRender();
 			generalFormulas.testTest();
-			//System.exit(0);
-
-//			BorderPane root = new BorderPane();
-//			root.setPrefSize(800,600);
-//			MenuBar menuBar = menuBarRow.menuAdd();
-//
-//			VBox vBox = new VBox(menuBar);
-//			root.setTop(vBox);
-//
-//			TabPane tabPane = TabsPane.tabAdd();
-//			VBox vBox1 = new VBox(tabPane);
-//			root.setLeft(vBox1);
-//
-//	        Scene scene = new Scene(root);
-//
-//	        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-//
-//		    primaryStage.setTitle("Testing Program");
-//		    primaryStage.setScene(scene);
-//			primaryStage.show();
-
+			
 		} catch(Exception e) {
 			e.printStackTrace();}
 		}
