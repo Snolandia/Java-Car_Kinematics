@@ -33,23 +33,25 @@
 -->
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.PerspectiveCamera?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"  >
+<VBox prefHeight="725.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -93,31 +95,807 @@
     <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
         
-        <AnchorPane fx:id="leftView" maxWidth="200.0"> 
-          <children>
-             
-            <Button text="Front Link 1" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="0.0"></Button>
-            <Button text="Front Link 2" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="30.0"></Button>
-            <Button text="Front Link 3" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="60.0"></Button>
-            <Button text="Front Link 4" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="90.0"></Button>
-            <Button text="Front Link 5" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="120.0"></Button>
-            <Button text="Rear Link 1" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="150.0"></Button>
-            <Button text="Rear Link 2" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="180.0"></Button>
-            <Button text="Rear Link 3" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="210.0"></Button>
-            <Button text="Rear Link 4" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="240.0"></Button>
-            <Button text="Rear Link 5" onAction="#handleSubmitButtonAction" layoutX="0.0" layoutY="270.0"></Button>
-          </children>
+        <AnchorPane fx:id="leftView" maxWidth="200.0">
+               <children>
+                  <Accordion layoutX="-1.0" prefHeight="615.0" prefWidth="202.0">
+                    <panes>
+                      <TitledPane animated="false" prefHeight="586.0" prefWidth="202.0" text="Front Suspension">
+                        <content>
+                          <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox layoutY="6.0" prefHeight="112.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 1 :" wrappingWidth="42.3203125" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutY="118.0" prefHeight="112.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 2 :" wrappingWidth="42.3203125" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutY="230.0" prefHeight="112.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 3 :" wrappingWidth="42.3203125" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutY="342.0" prefHeight="112.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 4 :" wrappingWidth="42.3203125" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutY="455.0" prefHeight="112.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 5 :" wrappingWidth="42.3203125" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                        <TitledPane animated="false" prefHeight="586.0" prefWidth="202.0" text="Rear Suspension">
+                           <content>
+                              <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox layoutY="6.0" prefHeight="112.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 1 :" wrappingWidth="42.3203125" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutY="118.0" prefHeight="112.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 2 :" wrappingWidth="42.3203125" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutY="230.0" prefHeight="112.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 3 :" wrappingWidth="42.3203125" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutY="342.0" prefHeight="112.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 4 :" wrappingWidth="42.3203125" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutY="455.0" prefHeight="112.0" prefWidth="208.0">
+                                       <children>
+                                          <HBox prefHeight="30.0" prefWidth="200.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 5 :" wrappingWidth="42.3203125" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="10.0" prefWidth="208.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Spinner>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
         </AnchorPane>
         
-        <AnchorPane fx:id="renderView" id="Content" minHeight="0.0" minWidth="100.0" prefHeight="545.0" prefWidth="430.0" >
-         <children>
-         </children>
-        </AnchorPane>
+        <AnchorPane id="Content" fx:id="renderView" minHeight="0.0" minWidth="100.0" prefHeight="545.0" prefWidth="430.0" />
         
-        <AnchorPane fx:id="rightView" maxWidth="200.0"> 
-          <children>
-             
-          </children>
+        <AnchorPane fx:id="rightView" maxWidth="200.0">
+               <children>
+                  <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" />
+               </children>
         </AnchorPane>
       
       </items>
