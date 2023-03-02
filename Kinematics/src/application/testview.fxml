@@ -50,6 +50,8 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.SpinnerValueFactory?>
+<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
 
 <VBox prefHeight="725.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
   <children>
@@ -101,7 +103,7 @@
                     <panes>
                       <TitledPane animated="false" prefHeight="586.0" prefWidth="202.0" text="Front Suspension">
                         <content>
-                          <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="200.0">
+                          <AnchorPane fx:id="frontSuspensionPane" maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="200.0">
                                  <children>
                                     <VBox layoutY="6.0" prefHeight="112.0" prefWidth="208.0">
                                        <children>
@@ -122,13 +124,16 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1iX" min="0" max="100" initialValue="0" onChange="#spinnerChange">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1iX">
                                                 	<editable>true</editable>
+                                                	<valueFactory>
+                										<SpinnerValueFactory.IntegerSpinnerValueFactory min="-3000" max="3000" initialValue="100" amountToStepBy="1"/>
+            										</valueFactory>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1oX" min="0" max="100" initialValue="0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1oX" min="-3000" max="100" initialValue="0">
                                                 	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -146,13 +151,13 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1iY" min="0" max="100" initialValue="0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1iY" min="-3000" max="100" initialValue="0">
                                                 	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1oY" min="0" max="100" initialValue="0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0" fx:id="spinnerF1oY" min="-3000" max="100" initialValue="0">
                                                 	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -170,13 +175,13 @@
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0"  fx:id="spinnerF1iZ" min="0" max="100" initialValue="0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0"  fx:id="spinnerF1iZ" min="-3000" max="100" initialValue="0">
                                                 	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                                                    </HBox.margin>
                                                 </Spinner>
-                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0"  fx:id="spinnerF1oZ" min="0" max="100" initialValue="0">
+                                                <Spinner minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0"  fx:id="spinnerF1oZ" min="-3000" max="100" initialValue="0">
                                                 	<editable>true</editable>
                                                    <HBox.margin>
                                                       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />

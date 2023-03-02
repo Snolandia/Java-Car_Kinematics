@@ -170,7 +170,7 @@ public class vehicleBuilder extends Group {
 
     private void frontLinks() {
     	
-    	Cylinder cylinder1 = new Cylinder(2,30);
+    	Cylinder cylinder1 = new Cylinder(1,30);
     	Sphere sphere11 = new Sphere(2);
     	sphere11.setTranslateY(15);
     	Sphere sphere21 = new Sphere(2);
@@ -182,7 +182,7 @@ public class vehicleBuilder extends Group {
     	frontLink1.getChildren().add(cylinder1);
     	//frontLink1.setTranslate(-15,-15,15);
     	
-    	Cylinder cylinder2 = new Cylinder(2,30);
+    	Cylinder cylinder2 = new Cylinder(1,30);
     	Sphere sphere12 = new Sphere(2);
     	sphere12.setTranslateY(15);
     	Sphere sphere22 = new Sphere(2);
@@ -194,7 +194,7 @@ public class vehicleBuilder extends Group {
     	frontLink2.getChildren().add(cylinder2);
     	//frontLink2.setTranslate(15,-15,15);
     	
-    	Cylinder cylinder3 = new Cylinder(2,30);
+    	Cylinder cylinder3 = new Cylinder(1,30);
     	Sphere sphere13 = new Sphere(2);
     	sphere13.setTranslateY(15);
     	Sphere sphere23 = new Sphere(2);
@@ -206,7 +206,7 @@ public class vehicleBuilder extends Group {
     	frontLink3.getChildren().add(cylinder3);
     	//frontLink3.setTranslate(15,-15,-15);
     	
-    	Cylinder cylinder4 = new Cylinder(2,30);
+    	Cylinder cylinder4 = new Cylinder(1,30);
     	Sphere sphere14 = new Sphere(2);
     	sphere14.setTranslateY(15);
     	Sphere sphere24 = new Sphere(2);
@@ -218,7 +218,7 @@ public class vehicleBuilder extends Group {
     	frontLink4.getChildren().add(cylinder4);
     	//frontLink4.setTranslate(15,15,-15);
     	
-    	Cylinder cylinder5 = new Cylinder(2,30);
+    	Cylinder cylinder5 = new Cylinder(1,30);
     	Sphere sphere15 = new Sphere(2);
     	sphere15.setTranslateY(15);
     	Sphere sphere25 = new Sphere(2);
