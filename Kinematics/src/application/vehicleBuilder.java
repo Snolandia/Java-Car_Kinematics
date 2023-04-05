@@ -35,7 +35,7 @@ public class vehicleBuilder extends Group {
     final Xform cameraXform = new Xform();
     final Xform cameraXform2 = new Xform();
     final Xform cameraXform3 = new Xform();
-    private static final double CAMERA_INITIAL_DISTANCE = -450;
+    private static final double CAMERA_INITIAL_DISTANCE = -600;
     private static final double CAMERA_INITIAL_X_ANGLE = 70.0;
     private static final double CAMERA_INITIAL_Y_ANGLE = 320.0;
     private static final double CAMERA_NEAR_CLIP = 0.1;

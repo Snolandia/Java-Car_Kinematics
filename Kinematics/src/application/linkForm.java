@@ -87,9 +87,9 @@ public class linkForm extends Group {
     }
 
     public void setScale(double x, double y, double z) {
-        s.setX(x);
-        s.setY(y);
         s.setZ(z);
+        s.setY(y);
+        s.setX(x);
     }
 
     public void setSx(double x) { s.setX(x); }
@@ -162,6 +162,11 @@ public class linkForm extends Group {
                            "ip = (" +
                            ip.getX() + ", " + 
                            ip.getY() + ", " + 
-                           ip.getZ() + ")]";
+                           ip.getZ() + ")]" +
+                           "axis " +
+                           rx.getAxis() + ", " +
+                           ry.getAxis() + ", " +
+                           rz.getAxis() 
+                           ;
     }
 }

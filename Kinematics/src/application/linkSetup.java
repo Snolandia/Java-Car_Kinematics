@@ -1,5 +1,6 @@
 package application;
 
+import application.linkForm.RotateOrder;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -11,7 +12,7 @@ public class linkSetup extends Group {
 	Cylinder cylinder = new Cylinder(1,30);
 	Sphere inSphere = new Sphere(2);
 	Sphere outSphere = new Sphere(2);
-	linkForm rod = new linkForm();
+	linkForm rod = new linkForm(RotateOrder.XYZ);
 	linkForm inboard = new linkForm();
 	linkForm outboard = new linkForm();
 	linkForm link = new linkForm();
@@ -42,15 +43,19 @@ public class linkSetup extends Group {
 		if(inboardOutboard == 0) {
 			switch (xYZ) {
 				case 0:
-					inboard.setTx(arg2);
+					rod.setRx(arg2);
+					//inboard.setTx(arg2);
 					break;
 				case 1:
-					inboard.setTy(arg2);
+					rod.setRy(arg2);
+					//inboard.setTy(arg2);
 					break;
 				case 2:
-					inboard.setTz(arg2);
+					rod.setRz(arg2);
+					//inboard.setTz(arg2);
 					break;
 			}
+			System.out.println("inboard" + inboard);
 		}
 		if(inboardOutboard == 1) {
 			switch (xYZ) {
@@ -64,11 +69,13 @@ public class linkSetup extends Group {
 					outboard.setTz(arg2);
 					break;
 			}
+			System.out.println("outboard" + outboard);
 		}
 		distanceCalc();
 		cylinder.setHeight(distance);
-		setRotates();
+		//setRotates();
 		reAdjustRod();
+		System.out.println("rod" + rod);
 	}
 	
 	private void reAdjustRod() {
@@ -79,7 +86,8 @@ public class linkSetup extends Group {
 		double outY = outboard.getY();
 		double outZ = outboard.getZ();
 		
-		rod.setTranslate(((outX-inX)/2)+inX, ((outY-inY)/2)+inY, ((outZ-inZ)/2)+inZ);
+		//rod.setTranslate(((outX-inX)/2)+inX, ((outY-inY)/2)+inY, ((outZ-inZ)/2)+inZ);
+		rod.setTranslate(10,10 ,10 );
 		
 	}
 	
@@ -90,13 +98,19 @@ public class linkSetup extends Group {
 		double outX = outboard.getX();
 		double outY = outboard.getY();
 		double outZ = outboard.getZ();
-		double rX = 0;
-		double rY = 0;
+		double rX = 45;
+		double rY = 45;
 		double rZ = 0;
 		
-		//rX = Math.toDegrees(Math.asin((inY-outY)/Math.sqrt(((outY-inY)*(outY-inY))+((outZ-inZ)*(outZ-inZ)))));
-		rY = Math.toDegrees(Math.asin((inZ-outZ)/Math.sqrt(((outX-inX)*(outX-inX))+((outZ-inZ)*(outZ-inZ)))));
-		rZ = Math.toDegrees(Math.asin((outX-inX)/Math.sqrt(((outX-inX)*(outX-inX))+((outY-inY)*(outY-inY)))));
+		if(Math.sqrt(((outY-inY)*(outY-inY))+((outZ-inZ)*(outZ-inZ)))!=0){
+			//rX = Math.toDegrees(Math.acos((inY-outY)/Math.sqrt(((outY-inY)*(outY-inY))+((outZ-inZ)*(outZ-inZ)))));
+		}
+		if(Math.sqrt(((outX-inX)*(outX-inX))+((outZ-inZ)*(outZ-inZ)))!=0) {
+			//rY = Math.toDegrees(Math.acos((inZ-outZ)/Math.sqrt(((outX-inX)*(outX-inX))+((outZ-inZ)*(outZ-inZ)))));
+		}
+		if(Math.sqrt(((outX-inX)*(outX-inX))+((outY-inY)*(outY-inY)))!=0) {
+			//rZ = Math.toDegrees(Math.acos((outX-inX)/Math.sqrt(((outX-inX)*(outX-inX))+((outY-inY)*(outY-inY)))));
+		}
 		
 		System.out.println("Distance: " + distance);
 		System.out.println("inx:" + inX + " iny:" + inY + " inz:" + inZ);
