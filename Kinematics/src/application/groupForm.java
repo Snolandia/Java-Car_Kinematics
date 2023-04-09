@@ -5,7 +5,7 @@ import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Scale;
 import javafx.scene.transform.Translate;
 
-public class linkForm extends Group {
+public class groupForm extends Group {
 
     public enum RotateOrder {
         XYZ, XZY, YXZ, YZX, ZXY, ZYX
@@ -22,12 +22,12 @@ public class linkForm extends Group {
     { rz.setAxis(Rotate.Z_AXIS); }
     public Scale s = new Scale();
 
-    public linkForm() { 
+    public groupForm() { 
         super(); 
         getTransforms().addAll(t, rz, ry, rx, s); 
     }
 
-    public linkForm(RotateOrder rotateOrder) { 
+    public groupForm(RotateOrder rotateOrder) { 
         super(); 
         // choose the order of rotations based on the rotateOrder
         switch (rotateOrder) {
@@ -143,7 +143,7 @@ public class linkForm extends Group {
     public double getZ() {return t.getZ();}
     
     @Override public String toString() {
-        return "Xform[t = (" +
+        return "groupForm[t = (" +
                            t.getX() + ", " +
                            t.getY() + ", " +
                            t.getZ() + ")  " +

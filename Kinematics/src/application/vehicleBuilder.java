@@ -27,14 +27,15 @@ public class vehicleBuilder extends Group {
 	Group group = new Group();
 	SubScene subScene;
 	final Group root = new Group();
-    final Xform axisGroup = new Xform();
-    final Xform world = new Xform();
-    final Xform vehicle = new Xform();
-    final Xform suspensionLinksXform = new Xform();
+    final groupForm axisGroup = new groupForm();
+    final groupForm world = new groupForm();
+    final groupForm vehicle = new groupForm();
+    final groupForm suspensionLinksGroupForm = new groupForm();
+    final cogSetup cogGroupForm = new cogSetup();
     final PerspectiveCamera camera = new PerspectiveCamera(true);
-    final Xform cameraXform = new Xform();
-    final Xform cameraXform2 = new Xform();
-    final Xform cameraXform3 = new Xform();
+    final groupForm cameraGroupForm = new groupForm();
+    final groupForm cameraGroupForm2 = new groupForm();
+    final groupForm cameraGroupForm3 = new groupForm();
     private static final double CAMERA_INITIAL_DISTANCE = -600;
     private static final double CAMERA_INITIAL_X_ANGLE = 70.0;
     private static final double CAMERA_INITIAL_Y_ANGLE = 320.0;
@@ -57,17 +58,17 @@ public class vehicleBuilder extends Group {
     //Needs looked at
     private void buildCamera() {
         System.out.println("buildCamera()");
-        root.getChildren().add(cameraXform);
-        cameraXform.getChildren().add(cameraXform2);
-        cameraXform2.getChildren().add(cameraXform3);
-        cameraXform3.getChildren().add(camera);
-        cameraXform3.setRotateZ(180.0);
+        root.getChildren().add(cameraGroupForm);
+        cameraGroupForm.getChildren().add(cameraGroupForm2);
+        cameraGroupForm2.getChildren().add(cameraGroupForm3);
+        cameraGroupForm3.getChildren().add(camera);
+        cameraGroupForm3.setRotateZ(180.0);
 
         camera.setNearClip(CAMERA_NEAR_CLIP);
         camera.setFarClip(CAMERA_FAR_CLIP);
         camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
-        cameraXform.ry.setAngle(CAMERA_INITIAL_Y_ANGLE);
-        cameraXform.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
+        cameraGroupForm.ry.setAngle(CAMERA_INITIAL_Y_ANGLE);
+        cameraGroupForm.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
     }
     
     //These are the axis for reference
@@ -95,7 +96,7 @@ public class vehicleBuilder extends Group {
 
         axisGroup.getChildren().addAll(xAxis, yAxis, zAxis);
         axisGroup.setVisible(true);
-        suspensionLinksXform.getChildren().addAll(axisGroup);
+        suspensionLinksGroupForm.getChildren().addAll(axisGroup);
     }
     
     //Unsure about these
@@ -126,8 +127,8 @@ public class vehicleBuilder extends Group {
                     modifier = SHIFT_MULTIPLIER;
                 }
                 if (me.isPrimaryButtonDown()) {
-                    cameraXform.ry.setAngle(cameraXform.ry.getAngle() - mouseDeltaX*MOUSE_SPEED*modifier*ROTATION_SPEED);
-                    cameraXform.rx.setAngle(cameraXform.rx.getAngle() + mouseDeltaY*MOUSE_SPEED*modifier*ROTATION_SPEED);
+                    cameraGroupForm.ry.setAngle(cameraGroupForm.ry.getAngle() - mouseDeltaX*MOUSE_SPEED*modifier*ROTATION_SPEED);
+                    cameraGroupForm.rx.setAngle(cameraGroupForm.rx.getAngle() + mouseDeltaY*MOUSE_SPEED*modifier*ROTATION_SPEED);
                 }
                 else if (me.isSecondaryButtonDown()) {
                     double z = camera.getTranslateZ();
@@ -135,8 +136,8 @@ public class vehicleBuilder extends Group {
                     camera.setTranslateZ(newZ);
                 }
                 else if (me.isMiddleButtonDown()) {
-                    cameraXform2.t.setX(cameraXform2.t.getX() + mouseDeltaX*MOUSE_SPEED*modifier*TRACK_SPEED);
-                    cameraXform2.t.setY(cameraXform2.t.getY() + mouseDeltaY*MOUSE_SPEED*modifier*TRACK_SPEED);
+                    cameraGroupForm2.t.setX(cameraGroupForm2.t.getX() + mouseDeltaX*MOUSE_SPEED*modifier*TRACK_SPEED);
+                    cameraGroupForm2.t.setY(cameraGroupForm2.t.getY() + mouseDeltaY*MOUSE_SPEED*modifier*TRACK_SPEED);
                 }
             }
         });
@@ -149,11 +150,11 @@ public class vehicleBuilder extends Group {
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case Z:
-                        cameraXform2.t.setX(0.0);
-                        cameraXform2.t.setY(0.0);
+                        cameraGroupForm2.t.setX(0.0);
+                        cameraGroupForm2.t.setY(0.0);
                         camera.setTranslateZ(CAMERA_INITIAL_DISTANCE);
-                        cameraXform.ry.setAngle(CAMERA_INITIAL_Y_ANGLE);
-                        cameraXform.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
+                        cameraGroupForm.ry.setAngle(CAMERA_INITIAL_Y_ANGLE);
+                        cameraGroupForm.rx.setAngle(CAMERA_INITIAL_X_ANGLE);
                         break;
                     case X:
                         axisGroup.setVisible(!axisGroup.isVisible());
@@ -165,8 +166,25 @@ public class vehicleBuilder extends Group {
             }
         });
     }
-
     
+    private void wheels() {
+    	
+    	
+    	
+    }
+    
+    private void cog() {
+    	
+    	System.out.println("Cog being set up");
+    	//cog placeholder
+    	
+    }
+    
+    public void cogAdjustment(int xyz, double arg2) {
+    	
+    	cogGroupForm.adjustments(xyz,arg2);
+    	
+    }
     
     private void suspension() {
     	
@@ -176,7 +194,7 @@ public class vehicleBuilder extends Group {
     		for(int linkNumber = 0;linkNumber<5;linkNumber++) {
     			
     			suspensionLinks[frontRear][linkNumber] = new linkSetup();
-    			suspensionLinksXform.getChildren().addAll(suspensionLinks[frontRear][linkNumber].link);
+    			suspensionLinksGroupForm.getChildren().addAll(suspensionLinks[frontRear][linkNumber].link);
     			
     		}
     	}
@@ -198,17 +216,19 @@ public class vehicleBuilder extends Group {
     public Group createVehicle() {
     	
     	System.out.println("starting up 3d rendering window");
-        root.getChildren().add(suspensionLinksXform);
+        root.getChildren().add(suspensionLinksGroupForm);
+        root.getChildren().add(cogGroupForm);
         root.setDepthTest(DepthTest.ENABLE);
         buildCamera();
         buildAxes();
         suspension();
+        cog();
 
         subScene = new SubScene(root, 400, 400, true, SceneAntialiasing.BALANCED);
         subScene.setFill(Color.GREY);
                 
-        handleKeyboard(subScene, suspensionLinksXform);
-        handleMouse(subScene, suspensionLinksXform);
+        handleKeyboard(subScene, suspensionLinksGroupForm);
+        handleMouse(subScene, suspensionLinksGroupForm);
 
         subScene.setCamera(camera);
         group.getChildren().add(subScene);

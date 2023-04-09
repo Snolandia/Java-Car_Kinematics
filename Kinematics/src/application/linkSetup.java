@@ -1,6 +1,6 @@
 package application;
 
-import application.linkForm.RotateOrder;
+import application.groupForm.RotateOrder;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -14,10 +14,10 @@ public class linkSetup extends Group {
 	
 	Sphere inSphere = new Sphere(1);
 	Sphere outSphere = new Sphere(1);
-	linkForm rod = new linkForm(RotateOrder.XYZ);
-	linkForm inboard = new linkForm();
-	linkForm outboard = new linkForm();
-	linkForm link = new linkForm();
+	groupForm rod = new groupForm(RotateOrder.XYZ);
+	groupForm inboard = new groupForm();
+	groupForm outboard = new groupForm();
+	groupForm link = new groupForm();
 	
 	double distance = 0;
     

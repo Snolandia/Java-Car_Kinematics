@@ -140,7 +140,26 @@ public class Calculated  {
 	double installationRatio = 0;
 	
 	// Wheel Rate vs. Spring Rate - Wheel rate is the effective spring rate calculated at the wheel after accounting for the installation ratio
-	double wheelRate = 0;
-	double springRate = 0;
+	static double wheelRate = 0;
+	static double springRate = 0;
+	
+	static int movementIncrements = 100;
+	static double frontIncrementRadians = 1/50;
+	static double rearIncrementRadians = 1/50;
+	double linksMovements[][][][][] = new double[movementIncrements][2][5][2][3];
+	
+	public static void calculateLinksMovements() {
+		//todo fix these calcs
+		//frontIncrementRadians = Statics.frontSuspensionTravel;
+		//rearIncrementRadians = Statics.rearSuspensionTravel;
+		
+		for(int i = 0;i<50;i++) {
+			
+		}
+		for(int i = 50;i<100;i++) {
+			
+		}
+		
+	}
 	
 }
