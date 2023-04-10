@@ -27,8 +27,11 @@ public class cogSetup extends Group{
     	blueMaterial.setSpecularColor(Color.BLUE);
 	
 		final Box xAxis = new Box(10, 1, 1);
+		xAxis.setTranslateX(5);
     	final Box yAxis = new Box(1, 10, 1);
+    	yAxis.setTranslateY(5);
     	final Box zAxis = new Box(1, 1, 10);
+    	zAxis.setTranslateZ(5);
 	
     	xAxis.setMaterial(redMaterial);
     	yAxis.setMaterial(greenMaterial);

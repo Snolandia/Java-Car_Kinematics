@@ -146,18 +146,61 @@ public class Calculated  {
 	static int movementIncrements = 100;
 	static double frontIncrementRadians = 1/50;
 	static double rearIncrementRadians = 1/50;
-	double linksMovements[][][][][] = new double[movementIncrements][2][5][2][3];
+	public static double linkMovements[][][][][] = new double[movementIncrements][2][5][2][3];
 	
 	public static void calculateLinksMovements() {
 		//todo fix these calcs
 		//frontIncrementRadians = Statics.frontSuspensionTravel;
 		//rearIncrementRadians = Statics.rearSuspensionTravel;
+		double xyz[] = new double[3];
 		
-		for(int i = 0;i<50;i++) {
-			
+		for(int i = 0;i<movementIncrements/2;i++) {
+			for(int link = 0;link<5;link++) {
+				xyz[0] = linkMovements[i][0][link][1][0];
+				xyz[1] = linkMovements[i][0][link][1][1];
+				xyz[2] = linkMovements[i][0][link][1][2];
+				
+				xyz = generalFormulas.yRotation(xyz, i);
+				
+				linkMovements[i][0][link][1][0] = xyz[0];
+				linkMovements[i][0][link][1][1] = xyz[1];
+				linkMovements[i][0][link][1][2] = xyz[2];
+				
+				xyz[0] = linkMovements[i][1][link][1][0];
+				xyz[1] = linkMovements[i][1][link][1][1];
+				xyz[2] = linkMovements[i][1][link][1][2];
+				
+				xyz = generalFormulas.yRotation(xyz, i);
+				
+				linkMovements[i][1][link][1][0] = xyz[0];
+				linkMovements[i][1][link][1][1] = xyz[1];
+				linkMovements[i][1][link][1][2] = xyz[2];
+				
+				
+			}
 		}
-		for(int i = 50;i<100;i++) {
-			
+		for(int i = movementIncrements/2;i<movementIncrements;i++) {
+			for(int link = 0;link<5;link++) {
+				xyz[0] = linkMovements[i][0][link][1][0];
+				xyz[1] = linkMovements[i][0][link][1][1];
+				xyz[2] = linkMovements[i][0][link][1][2];
+				
+				xyz = generalFormulas.yRotation(xyz, -i-50);
+				
+				linkMovements[i][0][link][1][0] = xyz[0];
+				linkMovements[i][0][link][1][1] = xyz[1];
+				linkMovements[i][0][link][1][2] = xyz[2];
+				
+				xyz[0] = linkMovements[i][1][link][1][0];
+				xyz[1] = linkMovements[i][1][link][1][1];
+				xyz[2] = linkMovements[i][1][link][1][2];
+				
+				xyz = generalFormulas.yRotation(xyz, -i-50);
+				
+				linkMovements[i][1][link][1][0] = xyz[0];
+				linkMovements[i][1][link][1][1] = xyz[1];
+				linkMovements[i][1][link][1][2] = xyz[2];
+			}	
 		}
 		
 	}

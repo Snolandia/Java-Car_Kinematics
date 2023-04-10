@@ -176,7 +176,7 @@ public class vehicleBuilder extends Group {
     private void cog() {
     	
     	System.out.println("Cog being set up");
-    	//cog placeholder
+    	cogGroupForm.getChildren().addAll(cogGroupForm.cog);
     	
     }
     

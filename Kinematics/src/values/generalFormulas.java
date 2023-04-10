@@ -126,25 +126,7 @@ public class generalFormulas {
 	
 	public static void testTest() {
 		
-		//plane tester
-//		double[][] array = {
-//				{3,2,7},
-//				{1,5,2},
-//				{2,5,17}
-//		};
-		double angle = .795968;
-		double wrong = .795968;
 		
-		angle = Math.toDegrees(angle);
-		angle = Math.round(angle*1000);
-		angle = angle/1000;
-		
-		wrong = Math.toDegrees(wrong);
-		wrong = (Math.round(angle*1000))/1000;
-		
-		System.out.println("angle : " + angle);
-		
-		System.out.println("wrong angle : " + wrong);
 			
 	}
 		
