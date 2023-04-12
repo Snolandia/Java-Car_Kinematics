@@ -20,6 +20,7 @@ import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
+import values.Statics;
 
 public class vehicleBuilder extends Group {
 	
@@ -32,19 +33,21 @@ public class vehicleBuilder extends Group {
     final groupForm vehicle = new groupForm();
     final groupForm suspensionLinksGroupForm = new groupForm();
     final cogSetup cogGroupForm = new cogSetup();
+    final groupForm wheelGroupForm = new groupForm();
+    final wheelSetup wheelSetupForm = new wheelSetup();
     final PerspectiveCamera camera = new PerspectiveCamera(true);
     final groupForm cameraGroupForm = new groupForm();
     final groupForm cameraGroupForm2 = new groupForm();
     final groupForm cameraGroupForm3 = new groupForm();
-    private static final double CAMERA_INITIAL_DISTANCE = -600;
+    private static final double CAMERA_INITIAL_DISTANCE = -6000;
     private static final double CAMERA_INITIAL_X_ANGLE = 70.0;
     private static final double CAMERA_INITIAL_Y_ANGLE = 320.0;
     private static final double CAMERA_NEAR_CLIP = 0.1;
     private static final double CAMERA_FAR_CLIP = 10000.0;
-    private static final double AXIS_LENGTH = 250.0;
+    private static final double AXIS_LENGTH = 2500.0;
     private static final double CONTROL_MULTIPLIER = 0.1;
     private static final double SHIFT_MULTIPLIER = 10.0;
-    private static final double MOUSE_SPEED = 0.1;
+    private static final double MOUSE_SPEED = 1;
     private static final double ROTATION_SPEED = 2.0;
     private static final double TRACK_SPEED = 0.3;
 
@@ -137,7 +140,10 @@ public class vehicleBuilder extends Group {
                 }
                 else if (me.isMiddleButtonDown()) {
                     cameraGroupForm2.t.setX(cameraGroupForm2.t.getX() + mouseDeltaX*MOUSE_SPEED*modifier*TRACK_SPEED);
+                    
                     cameraGroupForm2.t.setY(cameraGroupForm2.t.getY() + mouseDeltaY*MOUSE_SPEED*modifier*TRACK_SPEED);
+                    
+                    cameraGroupForm2.t.setZ(cameraGroupForm2.t.getZ() + mouseDeltaY*MOUSE_SPEED*modifier*TRACK_SPEED);
                 }
             }
         });
@@ -169,8 +175,26 @@ public class vehicleBuilder extends Group {
     
     private void wheels() {
     	
+    	wheelGroupForm.getChildren().addAll(wheelSetupForm);
     	
+    }
+    
+    public void hubLinkAdjustment(int frontRear, int linkNumber) {
     	
+    	Statics.updateHubCenter();
+    	Statics.hubLinkLengthUpdate(frontRear, linkNumber);
+    	wheelSetupForm.linkAdjustment(Statics.hubLinkLength[frontRear][linkNumber],frontRear,linkNumber);
+    	
+    }
+    
+    public void wheelAdjustment() {
+    	
+    	wheelSetupForm.moveFrontWheel(Statics.frontTrack,Statics.wheelbase);
+    	wheelSetupForm.moveRearWheel(Statics.rearTrack,Statics.wheelbase);
+    	wheelSetupForm.resizeFrontWheel(Statics.frontTireWidth,Statics.frontTireRatio, Statics.frontTireDiameter,Statics.frontTireOffset);
+    	wheelSetupForm.resizeRearWheel(Statics.rearTireWidth,Statics.rearTireRatio, Statics.rearTireDiameter,Statics.rearTireOffset);
+    	wheelSetupForm.frontAlignment(Statics.frontCamber,Statics.frontToe);
+    	wheelSetupForm.rearAlignment(Statics.rearCamber,Statics.rearToe);
     }
     
     private void cog() {
@@ -203,6 +227,10 @@ public class vehicleBuilder extends Group {
     public void suspensionAdjustment(int frontRear,int linkNumber,int inboardOutboard,int xYZ,double arg2) {
     	
     	suspensionLinks[frontRear][linkNumber].adjustments(inboardOutboard,xYZ,arg2);
+		Statics.updateLinks(frontRear,linkNumber,inboardOutboard,xYZ,arg2);
+    	if (inboardOutboard == 1) {
+    		hubLinkAdjustment(frontRear,linkNumber);
+    	}
     	
     }
     
@@ -218,11 +246,13 @@ public class vehicleBuilder extends Group {
     	System.out.println("starting up 3d rendering window");
         root.getChildren().add(suspensionLinksGroupForm);
         root.getChildren().add(cogGroupForm);
+        root.getChildren().add(wheelSetupForm.all);
         root.setDepthTest(DepthTest.ENABLE);
         buildCamera();
         buildAxes();
         suspension();
         cog();
+        wheels();
 
         subScene = new SubScene(root, 400, 400, true, SceneAntialiasing.BALANCED);
         subScene.setFill(Color.GREY);

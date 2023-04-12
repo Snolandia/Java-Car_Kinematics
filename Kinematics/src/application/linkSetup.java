@@ -54,7 +54,6 @@ public class linkSetup extends Group {
 					inboard.setTz(arg2);
 					break;
 			}
-			System.out.println("inboard" + inboard);
 		}
 		if(inboardOutboard == 1) {
 			switch (xYZ) {
@@ -68,13 +67,11 @@ public class linkSetup extends Group {
 					outboard.setTz(arg2);
 					break;
 			}
-			System.out.println("outboard" + outboard);
 		}
 		distanceCalc();
 		cylinder.setHeight(distance);
 		setRotates();
 		reAdjustRod();
-		System.out.println("rod" + rod);
 	}
 	
 	private void reAdjustRod() {
@@ -114,10 +111,6 @@ public class linkSetup extends Group {
 		
 		if(inX>outX) {rY = -rY;}
 		
-		System.out.println("Distance: " + distance);
-		System.out.println("inx:" + inX + " iny:" + inY + " inz:" + inZ);
-		System.out.println("outx:" + outX + " outy:" + outY + " outz:" + outZ);
-		System.out.println("rx:" + rX + " ry:" + rY + " rz:" + rZ);
 		rod.setRotate(rX,rY,rZ);
 		
 	}

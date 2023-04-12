@@ -5,6 +5,7 @@ module HelloWorld {
 	requires javafx.graphics;
 	requires javafx.fxml;
 	requires javafx.base;
+	requires jimStlMeshImporterJFX;
 	
 	opens application to javafx.graphics, javafx.fxml;
 }
