@@ -104,7 +104,6 @@ public class wheelSetup extends Group {
     	all.getChildren().addAll(rearLink4);
     	all.getChildren().addAll(rearLink5);
     	
-    	
 	}
 	
 	private Box centeredLink() {
