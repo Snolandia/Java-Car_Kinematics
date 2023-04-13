@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.text.Text;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -20,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import values.Calculated;
 import values.Statics;
 
 public class fxmlController {
@@ -62,6 +64,11 @@ public class fxmlController {
 		@SuppressWarnings("unchecked")
 		Spinner<Double> spins = (Spinner<Double>)event.getSource();
 		spins.getEditor().selectAll();
+	}
+	
+	@FXML private void testButton() {
+		Calculated.calculateLinksMovements(0);
+		System.out.println("Link movements Tested");
 	}
 	
 	vehicleBuilder vehicle = new vehicleBuilder();

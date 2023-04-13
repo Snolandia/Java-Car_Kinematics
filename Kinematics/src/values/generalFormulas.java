@@ -86,22 +86,104 @@ public class generalFormulas {
 		return newDigit;
 	}
 	
-	public static double[] planeFromPoints(double[][] points,int linkCount) {
+public static double magnitudeBetweenPointsX(pointForm point1, pointForm point2) {
+		
+		double x1 = point1.getX();
+		double x2 = point2.getX();
+		
+		double x = x1-x2;
+		
+		return x;
+	}
+
+	public static double magnitudeBetweenPointsY(pointForm point1, pointForm point2) {
+	
+		double y1 = point1.getY();
+		double y2 = point2.getY();
+		double y = y1-y2;
+	
+		return y;
+	}
+
+	public static double magnitudeBetweenPointsZ(pointForm point1, pointForm point2) {
+	
+		double z1 = point1.getZ();
+		double z2 = point2.getZ();
+	
+		double z = z1-z2;
+	
+		return z;
+	}
+
+	public static double magnitudeBetweenPoints(pointForm point1, pointForm point2) {
+		
+		double x1 = point1.getX();
+		double x2 = point2.getX();
+		double y1 = point1.getY();
+		double y2 = point2.getY();
+		double z1 = point1.getZ();
+		double z2 = point2.getZ();
+		
+		double x = x1-x2;
+		double y = y1-y2;
+		double z = z1-z2;
+		
+		double length = Math.sqrt((x*x)+(y*y)+(z*z));
+		
+		
+		return length;
+	}
+	
+	public static double[] normalVectorFromPoints(double[][] points,int linkCount) {
+		
+		// Returns Normal Vector in form : [X,Y,Z,D]
 		
 		double[] plane = new double[4];
 		double[][] vectors = new double[linkCount-1][3];
 		double[] normalVector = new double[3];
 		
+		//creates vectors from points given (only 2 actually needed)
 		for(int i = 0;i<linkCount-1;i++) {
 			for(int j = 0;j<3;j++) {
 				vectors[i][j] = points[i][j]-points[i+1][j];
 			}
 		}
 		
+		//uses first 2 vectors to calculate normal vectors of x,y,z
 		normalVector[0] = (vectors[0][1]*vectors[1][2])-(vectors[0][2]*vectors[1][1]);
 		normalVector[1] = (vectors[0][2]*vectors[1][0])-(vectors[0][0]*vectors[1][2]);
 		normalVector[2] = (vectors[0][0]*vectors[1][1])-(vectors[0][1]*vectors[1][0]);
 		
+		//converts normal vectors into planes
+		plane[0] = normalVector[0];
+		plane[1] = normalVector[1];
+		plane[2] = normalVector[2];
+		plane[3] = 0-(normalVector[0]*points[0][0])-(normalVector[1]*points[0][1])-(normalVector[2]*points[0][2]);
+		
+		return plane;
+	}
+	
+	public static double[] planeFromPoints(double[][] points,int linkCount) {
+		
+		// Returns plane in form : [X,Y,Z,D]
+		
+		double[] plane = new double[4];
+		double[][] vectors = new double[linkCount-1][3];
+		double[] normalVector = new double[3];
+		
+		//creates vectors from points given (only 2 actually needed)
+		for(int i = 0;i<linkCount-1;i++) {
+			for(int j = 0;j<3;j++) {
+				vectors[i][j] = points[i][j]-points[i+1][j];
+			}
+		}
+
+		//uses first 2 vectors to calculate normal vectors of x,y,z
+		normalVector[0] = (vectors[0][1]*vectors[1][2])-(vectors[0][2]*vectors[1][1]);
+		normalVector[1] = (vectors[0][2]*vectors[1][0])-(vectors[0][0]*vectors[1][2]);
+		normalVector[2] = (vectors[0][0]*vectors[1][1])-(vectors[0][1]*vectors[1][0]);
+
+		//converts normal vectors into planes
 		plane[0] = normalVector[0];
 		plane[1] = normalVector[1];
 		plane[2] = normalVector[2];

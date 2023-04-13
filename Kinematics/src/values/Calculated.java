@@ -143,65 +143,120 @@ public class Calculated  {
 	static double wheelRate = 0;
 	static double springRate = 0;
 	
-	static int movementIncrements = 100;
+	static double userMovementIncrements = 100;
+	
+	static double frontMovementIncrements = 100;
+	static double rearMovementIncrements = 100;
 	static double frontIncrementRadians = 1/50;
 	static double rearIncrementRadians = 1/50;
-	public static double linkMovements[][][][][] = new double[movementIncrements][2][5][2][3];
+	// fix these types
 	
-	public static void calculateLinksMovements() {
-		//todo fix these calcs
-		//frontIncrementRadians = Statics.frontSuspensionTravel;
-		//rearIncrementRadians = Statics.rearSuspensionTravel;
-		double xyz[] = new double[3];
+	public static void updateFrontIncrements() {
+		frontMovementIncrements = Statics.frontSuspensionTravel/userMovementIncrements;
+	}
+	
+	public static void updateRearIncrements() {
+		rearMovementIncrements = Statics.rearSuspensionTravel/userMovementIncrements;
+	}
+	//fix this type cast
+	public static double linkMovements[][][][][] = new double[(int) userMovementIncrements][2][5][2][3];
+	
+	public static void calculateLinksMovements(int frontRear) {
 		
-		for(int i = 0;i<movementIncrements/2;i++) {
-			for(int link = 0;link<5;link++) {
-				xyz[0] = linkMovements[i][0][link][1][0];
-				xyz[1] = linkMovements[i][0][link][1][1];
-				xyz[2] = linkMovements[i][0][link][1][2];
+		//send over to nonLinearSolver
+		updateFrontIncrements();
+		updateRearIncrements();
+		
+		boolean fixed = false;
+		boolean shared = true;
+		int dOF = 0;
+		int linkID = 0;
+		int pointID = 0;
+		
+		rigidBodyForm rigidBody = new rigidBodyForm();
+		
+		double xH = Statics.hubLink[frontRear][1][1][0];
+		double yH = Statics.hubLink[frontRear][1][1][1];
+		double zH = Statics.hubLink[frontRear][1][1][2];
+		pointForm pointHubCenter = new pointForm(xH,yH,zH,dOF,shared,fixed,pointID);
+		pointID++;
+		
+		for(int linkNumber = 0;linkNumber<5;linkNumber++) {
+			
+			linkForm link = new linkForm(true,linkID);
+			linkID++;
+			linkForm linkH = new linkForm(true,linkID);
+			linkID++;
+			
+			for(int pointNum = 0;pointNum<3;pointNum++) {
 				
-				xyz = generalFormulas.yRotation(xyz, i);
+				int pointNumH = pointNum - 1;
 				
-				linkMovements[i][0][link][1][0] = xyz[0];
-				linkMovements[i][0][link][1][1] = xyz[1];
-				linkMovements[i][0][link][1][2] = xyz[2];
+				if(pointNum<2) {
+					
+					double x = Statics.linkPoints[frontRear][linkNumber][pointNum][0];
+					double y = Statics.linkPoints[frontRear][linkNumber][pointNum][1];
+					double z = Statics.linkPoints[frontRear][linkNumber][pointNum][2];
+					
+					dOF = 3;
+					
+					fixed = false;
+					if(pointNum==0) {
+						fixed = true;
+					}
+					
+					shared = false;
+					if(pointNum==1) {
+						shared = true;
+					}
+					pointForm point = new pointForm(x,y,z,dOF,shared,fixed,pointID);
+					pointID++;
 				
-				xyz[0] = linkMovements[i][1][link][1][0];
-				xyz[1] = linkMovements[i][1][link][1][1];
-				xyz[2] = linkMovements[i][1][link][1][2];
+					link.addPoint(pointNum,point,shared,fixed);
+					
+					if(pointNumH==0) {
+						linkH.addPoint(pointNumH,point,shared,fixed);
+					}
+				}
 				
-				xyz = generalFormulas.yRotation(xyz, i);
-				
-				linkMovements[i][1][link][1][0] = xyz[0];
-				linkMovements[i][1][link][1][1] = xyz[1];
-				linkMovements[i][1][link][1][2] = xyz[2];
+				if(pointNumH==1) {
+					linkH.addPoint(pointNumH,pointHubCenter,shared,fixed);
+				}
 				
 				
 			}
+			
+			rigidBody.addLink(link);
+			rigidBody.addLink(linkH);
 		}
-		for(int i = movementIncrements/2;i<movementIncrements;i++) {
-			for(int link = 0;link<5;link++) {
-				xyz[0] = linkMovements[i][0][link][1][0];
-				xyz[1] = linkMovements[i][0][link][1][1];
-				xyz[2] = linkMovements[i][0][link][1][2];
+
+		shared = true;
+		dOF = 3;
+		fixed = false;
+		
+		for(int linkNumber = 0;linkNumber<5;linkNumber++) {
+			
+			linkForm link = new linkForm(true,linkID);
+			linkID++;
+			
+			int linkP = linkNumber*2 + 1;
+			if(linkNumber == 4) {
+				linkP = 0;
+			}
+			
+			pointForm point1 = (pointForm)((linkForm)rigidBody.getChild(linkNumber*2)).getChild(0);
+			pointForm point2 = (pointForm)((linkForm)rigidBody.getChild(linkP)).getChild(0);
 				
-				xyz = generalFormulas.yRotation(xyz, -i-50);
-				
-				linkMovements[i][0][link][1][0] = xyz[0];
-				linkMovements[i][0][link][1][1] = xyz[1];
-				linkMovements[i][0][link][1][2] = xyz[2];
-				
-				xyz[0] = linkMovements[i][1][link][1][0];
-				xyz[1] = linkMovements[i][1][link][1][1];
-				xyz[2] = linkMovements[i][1][link][1][2];
-				
-				xyz = generalFormulas.yRotation(xyz, -i-50);
-				
-				linkMovements[i][1][link][1][0] = xyz[0];
-				linkMovements[i][1][link][1][1] = xyz[1];
-				linkMovements[i][1][link][1][2] = xyz[2];
-			}	
-		}
+			link.addPoint(0,point1,shared,fixed);
+			link.addPoint(1,point2,shared,fixed);
+			
+			
+			rigidBody.addLink(link);
+		}	
+		
+		rigidBody.finalPoint(pointHubCenter);
+
+		nonLinearLinkSolver.solveIt(rigidBody);
 		
 	}
 	
