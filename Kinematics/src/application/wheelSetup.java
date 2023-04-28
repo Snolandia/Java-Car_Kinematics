@@ -138,7 +138,7 @@ public class wheelSetup extends Group {
 		linkArray[frontRear][linkNumber].getChildren().get(0).setScaleY(length);
 		
 		if(frontRear == 1 & linkNumber == 0) {
-			System.out.println("fr :" + frontRear + "  linknum : " + linkNumber + " length: " + length);
+			//System.out.println("fr :" + frontRear + "  linknum : " + linkNumber + " length: " + length);
 		}
 		double inX = Statics.hubLink[frontRear][linkNumber][0][0];
 		double inY = Statics.hubLink[frontRear][linkNumber][0][1];
@@ -169,9 +169,9 @@ public class wheelSetup extends Group {
 		
 		if(inX>outX) {rY = -rY;}
 		if(frontRear == 1 & linkNumber == 0) {
-			System.out.println("rotates: rx:" + rX + " / ry: " + rY + " / rz: " + rZ);
-			System.out.println("Ins: x : " + inX + " / y " + inY + " / z " + inZ);
-			System.out.println("Outs: x :" + outX + " / y " + outY + " / z " + outZ);
+			//System.out.println("rotates: rx:" + rX + " / ry: " + rY + " / rz: " + rZ);
+			//System.out.println("Ins: x : " + inX + " / y " + inY + " / z " + inZ);
+			//System.out.println("Outs: x :" + outX + " / y " + outY + " / z " + outZ);
 		}
 		linkArray[frontRear][linkNumber].setRotate(rX,rY,rZ);
 	}

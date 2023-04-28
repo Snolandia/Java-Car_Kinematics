@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javafx.scene.Group;
 
+
+
 public class linkForm {
 	
 	boolean fixedLength;
@@ -15,6 +17,17 @@ public class linkForm {
 	double length;
 	int linkID;
 	int pointIDs[] = new int[2];
+	
+	String p1x;
+	String p2x;
+	String p1y;
+	String p2y;
+	String p1z;
+	String p2z;
+	
+	//Implement later, links should store DOF of each Point, not points themselves
+	int dOF;
+	
 	ArrayList<Object> parents = new ArrayList<Object>();
 	ArrayList<pointForm> points = new ArrayList<pointForm>();
 	ArrayList<Object> children = new ArrayList<Object>();
@@ -94,19 +107,37 @@ public class linkForm {
 	
 	public void setLength() {
 		double x1 = points.get(0).getX();
-		double x2 = points.get(0).getX();
-		double y1 = points.get(0).getX();
-		double y2 = points.get(0).getX();
-		double z1 = points.get(0).getX();
-		double z2 = points.get(0).getX();
+		double x2 = points.get(1).getX();
+		double y1 = points.get(0).getY();
+		double y2 = points.get(1).getY();
+		double z1 = points.get(0).getZ();
+		double z2 = points.get(1).getZ();
 		
 		length = Math.sqrt((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))+((z1-z2)*(z1-z2))));
 		
 	}
 	
-	public void getLinkFormula() {
+	public String getLinkFormula() {
+		
+		p1x = "%" + String.valueOf(points.get(0).getPointID())+"X%";
+		p2x = "%" + String.valueOf(points.get(1).getPointID())+"X%";
+		p1y = "%" + String.valueOf(points.get(0).getPointID())+"Y%";
+		p2y = "%" + String.valueOf(points.get(1).getPointID())+"Y%";
+		p1z = "%" + String.valueOf(points.get(0).getPointID())+"Z%";
+		p2z = "%" + String.valueOf(points.get(1).getPointID())+"Z%";
+		
 		// 0 = X^2 + Y^2 + Z^2 - length^2
 		// 0 = (x1-x2)^2 + (y1-y2)^2+(z1-z2)^2 - length^2
+		//((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))+((z1-z2)*(z1-z2))))
+		String formula = "+((" + p1x+ "-" + p2x + ")^2)+" + "((" + p1y+ "-" + p2y + ")^2)+" + "((" + p1z+ "-" + p2z + ")^2)-" + (length*length);
+		double x1 = points.get(0).getX();
+		double x2 = points.get(1).getX();
+		double y1 = points.get(0).getY();
+		double y2 = points.get(1).getY();
+		double z1 = points.get(0).getZ();
+		double z2 = points.get(1).getZ();
+		//return "(x1-x2)^2 + (y1-y2)^2+(z1-z2)^2 - length^2";
+		return formula;
 	}
 	
 	public String getType() {

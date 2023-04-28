@@ -98,6 +98,10 @@ public class rigidBodyForm{
 		return children.get(index);
 	}
 	
+	public ArrayList<pointForm> getPointList() {
+		return pointList;
+	}
+	
 	public int getNumOfUsedVectors() {
 		return numOfUsedVectors;
 	}

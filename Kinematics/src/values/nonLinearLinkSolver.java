@@ -1,5 +1,7 @@
 package values;
 
+import java.util.ArrayList;
+
 public class nonLinearLinkSolver {
 	
 	private static int numLinks;
@@ -10,6 +12,7 @@ public class nonLinearLinkSolver {
 	static String[] nonLinearArray;
 	static String[] functionsArray;
 	static rigidBodyForm rigidBody;
+	static String[] variablesArray;
 	
 	public static void solveIt(rigidBodyForm rigid) {
 		
@@ -32,6 +35,37 @@ public class nonLinearLinkSolver {
 		//System.out.println("nonLinearLinkSolver ::: Number of Links " + numLinks + " / Number Of Vectors : " + numVectors + " / Number Of Variables " + numVariables);
 		
 		functionsArraySetup();
+		variablesArraySetup();
+		
+		jacobianMatrix jMatrix = new jacobianMatrix(functionsArray,variablesArray,rigid);
+		hessianMatrix hMatrix = new hessianMatrix(functionsArray,variablesArray,rigid);
+		
+	}
+	
+	private static void variablesArraySetup() {
+		
+		variablesArray = new String[numVariables];
+		
+		ArrayList<pointForm> pointList = rigidBody.getPointList();
+		int count = 0;
+		
+		for(int i = 0;i<pointList.size();i++) {
+			if(pointList.get(i).getFixed()==false) {
+				variablesArray[count] = String.valueOf(((pointForm)pointList.get(i)).getPointID()) + "X";
+				count++;
+			
+				variablesArray[count] = String.valueOf(((pointForm)pointList.get(i)).getPointID()) + "Y";
+				count++;
+			
+				variablesArray[count] = String.valueOf(((pointForm)pointList.get(i)).getPointID()) + "Z";
+				count++;
+			}
+		}
+		
+//		for(int i = 0;i<count;i++) {
+//			System.out.println("variables names : " + variablesArray[i]);
+//		}
+		
 		
 	}
 	
@@ -43,20 +77,20 @@ public class nonLinearLinkSolver {
 		
 		
 		for(int formulas = 0;formulas<numLinks;formulas++) {
-			functionsArray[arrayCounter] = "link";
+			functionsArray[arrayCounter] = ((linkForm)rigidBody.getChild(formulas)).getLinkFormula();
 			arrayCounter++;
 		}
 		
 		for(int formulas = 0;formulas<numVectors/3;formulas++) {
 			
 			
-			functionsArray[arrayCounter] = "vectorX";
+			functionsArray[arrayCounter] = rigidBody.vectorLink.getVector().getVectorXFormula();
 			arrayCounter++;
 			
-			functionsArray[arrayCounter] = "vectorY";
+			functionsArray[arrayCounter] = rigidBody.vectorLink.getVector().getVectorYFormula();
 			arrayCounter++;
 			
-			functionsArray[arrayCounter] = "vectorZ";
+			functionsArray[arrayCounter] = rigidBody.vectorLink.getVector().getVectorZFormula();
 			arrayCounter++;
 		}
 		

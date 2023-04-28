@@ -234,17 +234,19 @@ public class Calculated  {
 		dOF = 3;
 		fixed = false;
 		
+		//hub inboard to hub inboard
+		
 		for(int linkNumber = 0;linkNumber<5;linkNumber++) {
 			
 			linkForm link = new linkForm(true,linkID);
 			linkID++;
 			
-			int linkP = linkNumber*2 + 1;
+			int linkP = linkNumber*2 + 3;
 			if(linkNumber == 4) {
-				linkP = 0;
+				linkP = 1;
 			}
 			
-			pointForm point1 = (pointForm)((linkForm)rigidBody.getChild(linkNumber*2)).getChild(0);
+			pointForm point1 = (pointForm)((linkForm)rigidBody.getChild(linkNumber*2)).getChild(1);
 			pointForm point2 = (pointForm)((linkForm)rigidBody.getChild(linkP)).getChild(0);
 				
 			link.addPoint(0,point1,shared,fixed);
