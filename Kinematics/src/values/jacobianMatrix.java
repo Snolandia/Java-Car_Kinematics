@@ -25,6 +25,10 @@ public class jacobianMatrix {
 		int arrayWidth = variableArray.length;
 		String partialDerivative;
 		
+		for(int i = 0; i < arrayLength;i++) {
+			System.out.println("F() = : " + functionsArray[i]);
+		}
+		
 		matrix = new String[arrayLength][arrayWidth];
 		for(int i = 0; i < arrayWidth;i++) {
 			System.out.print(variableArray[i] + " | ");
