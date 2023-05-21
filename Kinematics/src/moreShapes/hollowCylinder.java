@@ -1,16 +1,12 @@
 package moreShapes;
 
 import java.net.URL;
-import java.util.Arrays;
 
 import com.interactivemesh.jfx.importer.ImportException;
 import com.interactivemesh.jfx.importer.stl.StlMeshImporter;
 
-import javafx.collections.ObservableFloatArray;
-import javafx.scene.Group;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.TriangleMesh;
-import javafx.scene.transform.Rotate;
 
 public class hollowCylinder extends MeshView{
 		

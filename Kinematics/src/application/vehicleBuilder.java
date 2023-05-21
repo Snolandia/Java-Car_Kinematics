@@ -1,8 +1,5 @@
 package application;
 
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
 import javafx.event.EventHandler;
 import javafx.scene.DepthTest;
 import javafx.scene.Group;
@@ -16,10 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
-import javafx.scene.shape.Cylinder;
-import javafx.scene.shape.MeshView;
-import javafx.scene.shape.Sphere;
-import javafx.scene.transform.Rotate;
 import values.Statics;
 
 public class vehicleBuilder extends Group {
@@ -39,7 +32,7 @@ public class vehicleBuilder extends Group {
     final groupForm cameraGroupForm = new groupForm();
     final groupForm cameraGroupForm2 = new groupForm();
     final groupForm cameraGroupForm3 = new groupForm();
-    private static final double CAMERA_INITIAL_DISTANCE = -6000;
+    private static final double CAMERA_INITIAL_DISTANCE = -1000;
     private static final double CAMERA_INITIAL_X_ANGLE = 70.0;
     private static final double CAMERA_INITIAL_Y_ANGLE = 320.0;
     private static final double CAMERA_NEAR_CLIP = 0.1;

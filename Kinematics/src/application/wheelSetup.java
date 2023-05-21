@@ -5,9 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Cylinder;
-import javafx.scene.shape.MeshView;
 import javafx.scene.shape.Sphere;
-import javafx.scene.shape.TriangleMesh;
 import javafx.scene.transform.Rotate;
 import moreShapes.hollowCylinder;
 import values.Statics;
@@ -48,7 +46,6 @@ public class wheelSetup extends Group {
 		
 		super();
 		
-		Sphere sphere = new Sphere(50);
 		
 		final PhongMaterial redMaterial = new PhongMaterial();
     	redMaterial.setDiffuseColor(Color.DARKRED);

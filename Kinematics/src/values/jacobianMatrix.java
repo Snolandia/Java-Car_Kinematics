@@ -12,7 +12,11 @@ public class jacobianMatrix {
 	
 	public jacobianMatrix(String[] functionsArray, String[] variableArray, rigidBodyForm rForm) {
 		
-		System.out.println("JACOBIAN MATRIX");
+		boolean print = false;
+		
+		if(print) {
+			System.out.println("JACOBIAN MATRIX");
+		}
 		vArray = variableArray;
 		fArray = functionsArray;
 		rigid = rForm;
@@ -26,22 +30,32 @@ public class jacobianMatrix {
 		String partialDerivative;
 		
 		for(int i = 0; i < arrayLength;i++) {
-			System.out.println("F() = : " + functionsArray[i]);
+			if(print) {
+				System.out.println("F() = : " + functionsArray[i]);
+			}
 		}
 		
 		matrix = new String[arrayLength][arrayWidth];
 		for(int i = 0; i < arrayWidth;i++) {
-			System.out.print(variableArray[i] + " | ");
+			if(print) {
+				System.out.print(variableArray[i] + " | ");
+			}
 		}
-		System.out.println();
+		if(print) {
+			System.out.println();
+		}
 		for(int length = 0;length<arrayLength;length++) {
 			
 			for(int width = 0;width<arrayWidth;width++) {
 				partialDerivative = calculatePartialDerivative(functionsArray[length],variableArray[width]);
 				matrix[length][width] = partialDerivative;
-				System.out.print(matrix[length][width] + " | ");
+				if(print) {
+					System.out.print(matrix[length][width] + " | ");
+				}
 			}
-			System.out.println();
+			if(print) {
+				System.out.println();
+			}
 		}
 		
 		
@@ -50,7 +64,7 @@ public class jacobianMatrix {
 	private String calculatePartialDerivative(String top, String bottom) {
 		
 		String partialDerivative;
-		
+		boolean print = false;
 		
 		
 		if(top.contains(")")) {
@@ -60,16 +74,24 @@ public class jacobianMatrix {
 			}
 		if(partialDerivative!="0") {
 			
-			//System.out.println("///////////////////////////////////");
-			//System.out.println("top : " + top);
-			//System.out.println(" bottom : " + bottom);
+			if(print) {
+				System.out.println("///////////////////////////////////");
+				System.out.println("top : " + top);
+				System.out.println(" bottom : " + bottom);
+			}
 			partialDerivative = expandString(partialDerivative);
-			//System.out.println("expand string : " + partialDerivative);
+			if(print) {
+				System.out.println("expand string : " + partialDerivative);
+			}
 			partialDerivative = locateVariable(partialDerivative,bottom);
-			//System.out.println("locate Variable : " + partialDerivative);
+			if(print) {
+				System.out.println("locate Variable : " + partialDerivative);
+			}
 			partialDerivative = partiallyDeriveModifiedString(partialDerivative,bottom);
-			//System.out.println("partially Derive : " + partialDerivative);
-			//System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+			if(print) {
+				System.out.println("partially Derive : " + partialDerivative);
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+			}
 			partialDerivative = simplify(partialDerivative);
 			partialDerivative = replaceConstants(partialDerivative);
 		}
@@ -94,9 +116,9 @@ public class jacobianMatrix {
 		
 		//System.out.println(holder);
 		
-		if(holder.equals("-%1i%*%10Z%+%1i%*%4Z%")) {
-			isVariable = false;
-		}
+		//if(holder.equals("-%1i%*%10Z%+%1i%*%4Z%")) {
+		//	isVariable = false;
+		//}
 		
 		for(int i = 0;i<holder.length();i++) {
 			isVariable = false;
@@ -208,9 +230,9 @@ public class jacobianMatrix {
 		}
 		
 		//System.out.println("semi mod String : " + holder);
-		if(holder.contains("+%1i%*%4Z%-%1i%*%2Z%")) {
-			skip = false;
-		}
+		//if(holder.contains("+%1i%*%4Z%-%1i%*%2Z%")) {
+		//	skip = false;
+		//}
 		
 		for(int i = 0; i<holder.length()-1;i++) {
 			if(holder.charAt(i)=='%') {
@@ -692,21 +714,68 @@ public class jacobianMatrix {
 	private String expandString(String string) {
 		
 		String baseString = string;
+		String value;
 		int operatorIndex;
 		int parBegin;
 		int parEnd;
 		int parCount;
+		String holder;
 		String modifierString;
 		double modifierValue;
 		int count;
+		int beg;
+		int end;
 		
 		//System.out.println("string : " + string);
-		if(string.contains("i") || string.contains("j") || string.contains("k")){
-			modifierString = handleVector(string);
-		}else if (string.contains(")^")){
+		if (string.contains(")^")){
 			modifierString = stringFunctionFinder(string,'^');
 			modifierString = exponentHandler(modifierString);
 		}else {
+//			count = 0;
+//			System.out.println("String : " +string);
+//			modifierString = "";
+//			for(int i = 1;i<string.length();i++) {
+//				if(string.charAt(i)=='(' & string.charAt(i-1)=='*' ) {
+//					end = i-1;
+//					beg = i-1;
+//					value = "";
+//					do {
+//						value = string.charAt(beg) + value;
+//						if(string.charAt(beg)=='+' || string.charAt(beg)=='-') {
+//							break;
+//						}
+//						beg--;
+//					}while(beg>=0);
+//					string = string.substring(0,beg) + string.substring(i,string.length());
+//					//i++;
+//					i = i - value.length();
+//					parCount = 1;
+//					do {
+//						if(string.charAt(i)=='(') {
+//							parCount++;
+//							if(parCount==2) {
+//								if(string.charAt(i+1)=='+'||string.charAt(i+1)=='-') {
+//									i++;
+//								}
+//								string = string.substring(0,i+1) + value + string.substring(i+1,string.length());
+//							}
+//						}else if(string.charAt(i)==')') {
+//							parCount--;
+//						}
+//						i++;
+//						if(parCount==0) {
+//							break;
+//						}
+//					}while(i<string.length());
+//					i=0;
+//					count++;
+//					if(count>50) {
+//						System.out.println("too many iterations, breaking");
+//						break;
+//					}
+//				}
+//			}
+//			
 			modifierString = string;
 		}
 		
@@ -719,12 +788,18 @@ public class jacobianMatrix {
 		
 		String modifiedString = "error";
 		String holder = "";
+		int pars = 0;
 		
-		//System.out.println("locatVariable of : " + bottom);
+		//System.out.println("locate Variable of : " + bottom);
 		
 		if(top.contains("%" + bottom + "%")) {
 			modifiedString = "";
 			for(int i = 0;i<top.length();i++) {
+				if (top.charAt(i)=='(') {
+					pars++;
+				}else if (top.charAt(i)==')') {
+					pars--;
+				}
 				if (top.charAt(i)=='+' || top.charAt(i)=='-') {
 					holder = "" + top.charAt(i);
 				}else {
@@ -732,10 +807,14 @@ public class jacobianMatrix {
 				
 				}
 				if (holder.contains(bottom)) {
-					if(i == top.length()-1) {
-						modifiedString = modifiedString + holder;
-					}else if(top.charAt(i+1)=='+' || top.charAt(i+1)=='-') {
-						modifiedString = modifiedString + holder;
+					if(pars==0) {	
+						if(i == top.length()-1) {
+							modifiedString = modifiedString + holder;
+						}else if(top.charAt(i+1)=='+' || top.charAt(i+1)=='-') {
+							modifiedString = modifiedString + holder;
+						}
+					}else {
+						
 					}
 				}
 			}

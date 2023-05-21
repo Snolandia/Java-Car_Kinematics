@@ -1,11 +1,14 @@
 package values;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class vectorForm {
 	
 	private double vector[] = new double[4];
+	double ABVector[];
+	double ACVector[];
+	double[] plane;
 	double vectorX;
 	double vectorY;
 	double vectorZ;
@@ -14,6 +17,17 @@ public class vectorForm {
 	double magnitudeX;
 	double magnitudeY;
 	double magnitudeZ;
+	double ABratio;
+	double ABmagnitude;
+	double ACmagnitude;
+	double ACratio;
+	double ABratio2;
+	double ACratio2;
+	String[] ABVectorSigns = new String[3];
+	String[] ACVectorSigns = new String[3];
+	String[] ABVectorSignsPerp = new String[3];
+	String[] ACVectorSignsPerp = new String[3];
+	String[] planeSignsPerp = new String[3];
 	double p1RatioX = 1;
 	double p1RatioY = 1;
 	double p1RatioZ = 1;
@@ -22,6 +36,9 @@ public class vectorForm {
 	double p2RatioZ = 1;
 	int vectorID;
 	boolean vectorPlane = false;
+	double closestPointDistance;
+	double closestPointToPointDistance;
+	double[] closestPoint;
 	pointForm point1;
 	pointForm point2;
 	pointForm planePoint1;
@@ -30,8 +47,12 @@ public class vectorForm {
 	pointForm vectorPoint;
 	ArrayList<Object> parents = new ArrayList<Object>();
 	
+	
+	
 	String ABx;
 	String ABy;
+	String BAy;
+	String CAy;
 	String ABz;
 	String ACx;
 	String ACy;
@@ -44,19 +65,22 @@ public class vectorForm {
 	String vectorPointZ;
 	String vectorFormula;
 	String vectorPlaneFormula;
+	DecimalFormat df = new DecimalFormat("#");
 	
 	public vectorForm(pointForm p1, pointForm p2,int ID) {
+		
+        df.setMaximumFractionDigits(30);
 		
 		vectorID = ID;
 		
 		point1 = p1;
 		point2 = p2;
 		
-		magnitude = generalFormulas.magnitudeBetweenPoints(p1, p2);
-		magnitudeX = generalFormulas.magnitudeBetweenPointsX(p1, p2);
-		magnitudeY = generalFormulas.magnitudeBetweenPointsY(p1, p2);
-		magnitudeZ = generalFormulas.magnitudeBetweenPointsZ(p1, p2);
-		
+		magnitude = generalFormulas.magnitudeBetweenPoints(p2, p1);
+		magnitudeX = generalFormulas.magnitudeBetweenPointsX(p2, p1);
+		magnitudeY = generalFormulas.magnitudeBetweenPointsY(p2, p1);
+		magnitudeZ = generalFormulas.magnitudeBetweenPointsZ(p2, p1);
+		//System.out.println("vector : " + vectorID + " / " + magnitude);
 	}
 	
 	public void vectorPlaneSetup() {
@@ -67,46 +91,104 @@ public class vectorForm {
 		//test code
 		if(vectorPlane) {
 			//Dunno about this one yet?
-			//adjustForMagnitudeCorrections();
+			addVectors();
+			adjustForMagnitudeCorrections();
 			createVectorFormulas();
 		}
 		
 	}
 	
+	private void addVectors() {
+		ABVector = generalFormulas.vectorFromTwoPoints(planePoint0, planePoint1);
+		if(ABVector[0]<0) {
+			ABVectorSigns[0] = "-";
+		}else {
+			ABVectorSigns[0] = "+";
+		}
+		if(ABVector[1]<0) {
+			ABVectorSigns[1] = "-";
+		}else {
+			ABVectorSigns[1] = "+";
+		}
+		if(ABVector[2]<0) {
+			ABVectorSigns[2] = "-";
+		}else {
+			ABVectorSigns[2] = "+";
+		}
+		//System.out.println(ABVector[0]+", "+ABVector[1]+", "+ABVector[2]);
+		ACVector = generalFormulas.vectorFromTwoPoints(planePoint0, planePoint2);
+		if(ACVector[0]<0) {
+			ACVectorSigns[0] = "-";
+		}else {
+			ACVectorSigns[0] = "+";
+		}
+		if(ACVector[1]<0) {
+			ACVectorSigns[1] = "-";
+		}else {
+			ACVectorSigns[1] = "+";
+		}
+		if(ACVector[2]<0) {
+			ACVectorSigns[2] = "-";
+		}else {
+			ACVectorSigns[2] = "+";
+		}
+	}
+	
 	//EXPERIMENTAL CODE BLOCK
 	private void adjustForMagnitudeCorrections() {
 		
-		if (magnitudeX == 0) {
-			p1RatioX = 0;
+		double[][] points = new double[][] {
+			{planePoint0.getX(),planePoint0.getY(),planePoint0.getZ()},
+			{planePoint1.getX(),planePoint1.getY(),planePoint1.getZ()},
+			{planePoint2.getX(),planePoint2.getY(),planePoint2.getZ()},
+		};
+		
+		ABmagnitude = generalFormulas.magnitudeBetweenPoints(planePoint1, planePoint0);
+		ACmagnitude = generalFormulas.magnitudeBetweenPoints(planePoint2, planePoint0);
+		
+		plane = generalFormulas.planeFromPoints(points, 3);
+		closestPoint = generalFormulas.pointOnPlaneClosestToPoint(plane, vectorPoint);
+		closestPointDistance = generalFormulas.magnitudeBetweenPoints(planePoint0, closestPoint);
+		if(vectorPoint.getX()-closestPoint[0]<0) {
+			ABVectorSignsPerp[0] = "-";
 		}else {
-			p1RatioX = magnitudeX/generalFormulas.magnitudeBetweenPointsX(planePoint0, planePoint1);
+			ABVectorSignsPerp[0] = "+";
 		}
-		if (magnitudeY == 0) {
-			p1RatioY = 0;
+		if(vectorPoint.getY()-closestPoint[0]<0) {
+			ABVectorSignsPerp[1] = "-";
 		}else {
-			p1RatioY = magnitudeY/generalFormulas.magnitudeBetweenPointsY(planePoint0, planePoint1);
+			ABVectorSignsPerp[1] = "+";
 		}
-		if (magnitudeZ == 0) {
-			p1RatioZ = 0;
+		if(vectorPoint.getZ()-closestPoint[0]<0) {
+			ABVectorSignsPerp[2] = "-";
 		}else {
-			p1RatioZ = magnitudeZ/generalFormulas.magnitudeBetweenPointsZ(planePoint0, planePoint1);
+			ABVectorSignsPerp[2] = "+";
 		}
-		if (magnitudeX == 0) {
-			p2RatioX = 0;
-		}else {
-			p2RatioX = magnitudeX/generalFormulas.magnitudeBetweenPointsX(planePoint0, planePoint2);
+		double temp = 0;
+		closestPointToPointDistance = generalFormulas.magnitudeBetweenPoints(vectorPoint, closestPoint);
+		if(temp<0) {
+			closestPointToPointDistance = -closestPointToPointDistance;
 		}
-		if (magnitudeY == 0) {
-			p2RatioY = 0;
+		//System.out.println("PLANE : " + plane[0] + "x "+ plane[1] + "y "+ plane[2] + "z "+ plane[3] + "c " );
+		
+		double[] pointHolder = generalFormulas.pointOnLineCloestToPoint(planePoint1, planePoint0, vectorPoint);
+		ABratio = ((generalFormulas.magnitudeBetweenPoints(planePoint0,pointHolder))/(ABmagnitude));
+		ABratio2 = (generalFormulas.magnitudeBetweenPoints(closestPoint,pointHolder))/(ABmagnitude);
+		pointHolder = generalFormulas.pointOnLineCloestToPoint(planePoint2, planePoint0, vectorPoint);
+		ACratio = (generalFormulas.magnitudeBetweenPoints(planePoint0,pointHolder))/(ACmagnitude);
+		ACratio2 = (generalFormulas.magnitudeBetweenPoints(closestPoint,pointHolder))/(ACmagnitude);
+		
+		//Setup figuring out if plane perpendicular is positive or negative
+		if(true) {
+			planeSignsPerp[0] = "-";
 		}else {
-			p2RatioY = magnitudeY/generalFormulas.magnitudeBetweenPointsY(planePoint0, planePoint2);
-		}
-		if (magnitudeZ == 0) {
-			p2RatioZ = 0;
-		}else {
-			p2RatioZ = magnitudeZ/generalFormulas.magnitudeBetweenPointsZ(planePoint0, planePoint2);
+			planeSignsPerp[0] = "+";
 		}
 		
+		System.out.println("closest Point Distance : " + closestPointDistance);
+		System.out.println("AB ratio : " + ABratio + "  AC ratio : " + ACratio);
+		//System.out.println("ignore ; " + generalFormulas.pointOnLineCloestToPoint(planePoint1, planePoint0, vectorPoint));
+		//System.out.println("ignore ; " + generalFormulas.pointOnLineCloestToPoint(planePoint2, planePoint0, vectorPoint));
 		
 	}
 	
@@ -188,6 +270,7 @@ public class vectorForm {
 	
 	public void createVectorFormulas() {
 		
+		
 		//ABx = (p1x-) * ratio
 		ABx = "(%" + planePoint1.getPointID() +"X%-%" + planePoint0.getPointID() + "X%)";//*" + p1RatioX + ")";
 		
@@ -196,33 +279,44 @@ public class vectorForm {
 		
 		//ABy = (p1y-p0y) * ratio
 		ABy = "(%" + planePoint1.getPointID() +"Y%-%" + planePoint0.getPointID() + "Y%)";//*" + p1RatioY + ")";
+		//BAy = "(%" + planePoint0.getPointID() +"Y%-%" + planePoint1.getPointID() + "Y%)";//*" + p1RatioY + ")";
 		
 		//ACy = (p2y-p0y) * ratio
 		ACy = "(%" + planePoint2.getPointID() +"Y%-%" + planePoint0.getPointID() + "Y%)";//*" + p2RatioY + ")";
-		
+		//CAy = "(%" + planePoint0.getPointID() +"Y%-%" + planePoint1.getPointID() + "Y%)";//*" + p2RatioY + ")";
 		//ABz = (p1z-p0z) * ratio
 		ABz = "(%" + planePoint1.getPointID() +"Z%-%" + planePoint0.getPointID() + "Z%)";//*" + p1RatioZ + ")";
 		
 		//ACz = (p2z-p0z) * ratio
 		ACz = "(%" + planePoint2.getPointID() +"Z%-%" + planePoint0.getPointID() + "Z%)";//*" + p2RatioZ + ")";
 		
+		String normalX = "((" + ABy + "*" + ACz + ")-(" + ABz + "*" + ACy + "))" ;
+		String normalY = "((" + ABx + "*" + ACz + ")-(" + ABz + "*" + ACx + "))" ;
+		String normalZ = "((" + ABy + "*" + ACx + ")-(" + ABx + "*" + ACy + "))" ;
+		String normalize = "(√(((" + normalX + "*" + normalX + ")+(" + normalY + "*" + normalY + "))+(" + normalZ + "*" + normalZ + ")))";
+		String planeX = "(" + normalX + "/" + normalize + ")";
+		String planeY = "(" + normalY + "/" + normalize + ")";
+		String planeZ = "(" + normalZ + "/" + normalize + ")";
+		
+		
 		//VectorX = i((AByACz)-(ACyABz))
 		vectorXformula = "+(i*(("+ABy+"*"+ACz+")-("+ACy+"*"+ABz+")))";
 		
 		//vectorPointX = point0x + ((AByACz)-(ACyABz))
-		vectorPointX = "+%" + planePoint0.getPointID() + "X%+(%" + vectorID + "i%*(("+ABy+"*"+ACz+")-("+ACy+"*"+ABz+")))";
+		vectorPointX = "+(%"+vectorPoint.getPointID()+ "X%)-(+%" + planePoint0.getPointID() + "X%+(" +"((+"+ABx+"*"+ABratio+")-(+"+ABratio2+"*((+"+ABy+"*"+planeZ+")+(+"+ABz+"*"+planeY+"))))+("+planeX+"*"+closestPointToPointDistance+")))";
 		
 		//VectorY = j((ACxABz)-(ABxACz))
 		vectorYformula = "+(j*(("+ACx+"*"+ABz+")-("+ABx+"*"+ACz+")))";
 		
 		//vectorPointY = point0y + j((ACxABz)-(ABxACz))
-		vectorPointY = "+%" + planePoint0.getPointID() + "Y%+(%" + vectorID + "j%*(("+ACx+"*"+ABz+")-("+ABx+"*"+ACz+")))";
+		vectorPointY ="+(%"+vectorPoint.getPointID()+  "Y%)-(+%" + planePoint0.getPointID() + "Y%+(" +"((+"+ACy+"*"+ACratio+")-(+"+ACratio2+"*((+"+ACx+"*"+planeZ+")+(+"+ACz+"*"+planeX+"))))+("+planeY+"*"+closestPointToPointDistance+")))";
 		
 		//VectorZ = k((ABxACy)-(AByACx))
 		vectorZformula = "+(k*(("+ABx+"*"+ACy+")-("+ABy+"*"+ACx+")))";
 		
 		//vectorPointZ = point0z + k((ABxACy)-(AByACx))
-		vectorPointZ = "+%" + planePoint0.getPointID() + "Z%+(%" + vectorID + "k%*(("+ABx+"*"+ACy+")-("+ABy+"*"+ACx+")))";
+		//vectorPointZ = "+(%"+vectorPoint.getPointID()+ "Z%)-(+%" + planePoint0.getPointID() + "Z%+(" +"((+"+ABz+"*"+df.format(ABratio)+")-(+"+ABratio2+"*((+"+ABy+"*"+planeX+")+(+"+ABx+"*"+planeY+"))))+("+planeZ+"*"+closestPointToPointDistance+")))";
+		vectorPointZ = "+(%"+vectorPoint.getPointID()+ "Z%)-(+%" + planePoint0.getPointID() + "Z%+((" +"((" + ABVectorSigns[2] + ABz+"*"+df.format(ABratio)+")+(((("+ABVectorSignsPerp[2]+df.format(ABratio2)+"*((("+ABy+"*"+plane[0]+"))+(((("+ABx+")*"+(plane[1])+")))))))+("+(-plane[2])+"*"+df.format(closestPointToPointDistance)+"))))))";
 		
 		//Vector = i((AByACz)-(ACyABz))+j((ACxABz)-(ABxACz))+k((ABxACy)-(AByACx))
 		vectorFormula = "+(i*((AByACz)-(ACyABz))+j((ACxABz)-(ABxACz))+k((ABxACy)-(AByACx)))";

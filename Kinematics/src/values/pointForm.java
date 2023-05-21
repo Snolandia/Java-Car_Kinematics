@@ -23,6 +23,8 @@ public class pointForm {
 		shared = shar;
 		fixed = fix;
 		pointID = IDNum;
+		
+		//System.out.println("point id " + pointID + " xyz (" + pointX + ", " + pointY + ", " + pointZ + ")");
 	}
 	
 	public void addParent(Object parent) {
