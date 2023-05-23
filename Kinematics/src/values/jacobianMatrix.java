@@ -1041,7 +1041,7 @@ public class jacobianMatrix {
 							}else {
 								do {
 									i++;
-								} while (top.charAt(i)!='%' & i<top.length());
+								} while (i<top.length() && top.charAt(i)!='%');
 								subEnd = -1;
 								break;
 							}

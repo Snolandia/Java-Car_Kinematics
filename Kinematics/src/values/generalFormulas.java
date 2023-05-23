@@ -134,7 +134,7 @@ public static double magnitudeBetweenPointsX(pointForm point1, pointForm point2)
 		return result;
 	}
 	
-	public static double[] pointOnLineCloestToPoint(pointForm A, pointForm B, pointForm point) {
+	public static double[] pointOnLineClosestToPoint(pointForm A, pointForm B, pointForm point) {
 		// t = ((x₀ - x₁) * a + (y₀ - y₁) * b + (z₀ - z₁) * c) / (a^2 + b^2 + c^2)
 		// point closest = (x, y, z) = (x₁ + at, y₁ + bt, z₁ + ct)
 		double top = ((point.getX()-A.getX())*(B.getX()-A.getX()))
@@ -149,7 +149,7 @@ public static double magnitudeBetweenPointsX(pointForm point1, pointForm point2)
 				A.getY()+((B.getY()-A.getY()))*t,
 				A.getZ()+((B.getZ()-A.getZ()))*t
 		};
-		System.out.println("point on line closest to point : (" + result[0] + ", " + result[1] + ", " + result[2] + ")");
+		//System.out.println("point on line closest to point : (" + result[0] + ", " + result[1] + ", " + result[2] + ")");
 		return result;
 	}
 	
@@ -173,7 +173,7 @@ public static double magnitudeBetweenPointsX(pointForm point1, pointForm point2)
 			result[i]=t*plane[i] + pointXYZ[i];
 			//System.out.println(t + " * " + plane[i] + " + " + pointXYZ[i] + " = " + result[i]);
 		}
-		System.out.println("Closest Point : " + result[0] + ", "+ result[1] + ", "+ result[2]);
+		//System.out.println("Closest Point : " + result[0] + ", "+ result[1] + ", "+ result[2]);
 		return result;
 	}
 	
@@ -247,17 +247,24 @@ public static double magnitudeBetweenPoints(pointForm point1, double[] point2) {
 	public static double[] normalVectorFromPoints(double[][] points,int linkCount) {
 		
 		// Returns Normal Vector in form : [X,Y,Z,D]
+		//may be out of order in the for loop
 		
 		double[] plane = new double[4];
 		double[][] vectors = new double[linkCount-1][3];
 		double[] normalVector = new double[3];
 		
 		//creates vectors from points given (only 2 actually needed)
-		for(int i = 0;i<linkCount-1;i++) {
-			for(int j = 0;j<3;j++) {
-				vectors[i][j] = points[i][j]-points[i+1][j];
-			}
-		}
+//		for(int i = 0;i<linkCount-1;i++) {
+//			for(int j = 0;j<3;j++) {
+//				vectors[i][j] = points[i][j]-points[i+1][j];
+//			}
+//		}
+		vectors[0][0] = points[1][0] - points[0][0];
+		vectors[0][1] = points[1][1] - points[0][1];
+		vectors[0][2] = points[1][2] - points[0][2];
+		vectors[1][0] = points[2][0] - points[0][0];
+		vectors[1][1] = points[2][1] - points[0][1];
+		vectors[1][2] = points[2][2] - points[0][2];
 		
 		//uses first 2 vectors to calculate normal vectors of x,y,z
 		normalVector[0] = (vectors[0][1]*vectors[1][2])-(vectors[0][2]*vectors[1][1]);
@@ -302,11 +309,18 @@ public static double magnitudeBetweenPoints(pointForm point1, double[] point2) {
 									+normalVector[1]*normalVector[1]
 									+normalVector[2]*normalVector[2]);
 		//converts normal vectors into planes
-		plane[0] = normalVector[0]/normalize;
-		plane[1] = normalVector[1]/normalize;
-		plane[2] = normalVector[2]/normalize;
-		plane[3] = (0-(normalVector[0]*points[0][0])-(normalVector[1]*points[0][1])-(normalVector[2]*points[0][2]))/normalize;
 		
+		if(normalize==0) {
+			plane[0]=0;
+			plane[1]=0;
+			plane[2]=0;
+			plane[3]=0;
+		}else {
+			plane[0] = normalVector[0]/normalize;
+			plane[1] = normalVector[1]/normalize;
+			plane[2] = normalVector[2]/normalize;
+			plane[3] = (0-(normalVector[0]*points[0][0])-(normalVector[1]*points[0][1])-(normalVector[2]*points[0][2]))/normalize;
+		}
 		return plane;
 	}
 	

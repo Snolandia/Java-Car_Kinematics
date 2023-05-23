@@ -22,7 +22,9 @@ public class nonLinearLinkSolver {
 	
 	public static void solveIt(rigidBodyForm rigid) {
 		
-		boolean print = true;
+		boolean print = false;
+		//boolean print = true;
+		double evaluation;
 		
 		rigidBody = rigid;
 		rigid.setupVectorPlanes();
@@ -75,7 +77,22 @@ public class nonLinearLinkSolver {
 			if(print) {
 				System.out.println("evaluate : " + evaluate(functionsArray[i]));
 			}
+			evaluation = evaluate(functionsArray[i]);
+			evaluation = Math.round(evaluation*100000000.0);
+			if(evaluation!=0) {
+				for(int j = 0;j < points.size();j++) {
+					if(points.get(j).getPointID()==2||points.get(j).getPointID()==4||points.get(j).getPointID()==10) {
+						//if(print) {
+							System.out.println("Point " + points.get(j).getPointID() + " XYZ : (" + points.get(j).getX() +", " +  points.get(j).getY() + ", " + points.get(j).getZ() + ")");
+						//}
+					}
+				}
+				System.out.println("Evaluation Error at formula number : " + i);
+				System.out.println("With  : " + functionsArray[i]);
+				System.out.println("Evaluation of : " + (evaluation/100000000.0));
+			}
 		}
+		
 		if(print) {
 			System.out.println("beg");
 		}
@@ -95,7 +112,8 @@ public class nonLinearLinkSolver {
 	
 	private static double evaluate(String formula) {
 		
-		boolean print = true;
+		//boolean print = true;
+		boolean print = false;
 		double result = 0;
 		char operator = ' ';
 		char specOp = '+';
@@ -222,6 +240,8 @@ public class nonLinearLinkSolver {
 						operator = '*';
 					}else if(holder.charAt(j)=='√') {
 						operator = '√';
+					}else if(holder.charAt(j)=='|') {
+						operator = '|';
 					}else {
 						System.out.println("operator error number 1 with a & b & operator of : ");
 						System.out.println(a + " : " + b + " : " + operator);
@@ -239,6 +259,8 @@ public class nonLinearLinkSolver {
 					holder = "" +  df.format(Double.parseDouble(a) * Double.parseDouble(b)); 
 				}else if(operator == '/') {
 					holder = "" +  df.format(Double.parseDouble(a) / Double.parseDouble(b)); 
+				}else if(operator == '|') {
+					holder = "" +  df.format(Math.abs(Double.parseDouble(b))); 
 				}else if(operator == '√') {
 					holder = "" +  df.format(Math.sqrt(Double.parseDouble(b)));
 //					System.out.println("operator error number XX with a & b & operator of : ");
@@ -302,6 +324,8 @@ public class nonLinearLinkSolver {
 					operator = '√';
 				}else if(formula.charAt(j)=='*') {
 					operator = '*';
+				}else if(holder.charAt(j)=='|') {
+					operator = '|';
 				}else {
 					System.out.println("operator error 3");
 					return 404.0;
@@ -327,6 +351,8 @@ public class nonLinearLinkSolver {
 						holder = "" +  df.format(Double.parseDouble(a) * Double.parseDouble(b)); 
 					}else if(operator == '/') {
 						holder = "" +  df.format(Double.parseDouble(a) / Double.parseDouble(b)); 
+					}else if(operator == '|') {
+						holder = "" +  df.format(Math.abs(Double.parseDouble(b))); 
 					}else if(operator == '√') {
 						holder = "" +  df.format(Math.sqrt(Double.parseDouble(b)));
 //						System.out.println("operator error number XX with a & b & operator of : ");
@@ -343,7 +369,7 @@ public class nonLinearLinkSolver {
 				}
 				formula = formula.substring(0,beg) + holder + formula.substring(end,formula.length());
 				if(print) {
-					System.out.println(formula);
+					System.out.println("f11 : " +formula);
 				}
 				beg = -1;
 				end = 0;
@@ -361,6 +387,8 @@ public class nonLinearLinkSolver {
 						holder = "" +  df.format(Double.parseDouble(a) - Double.parseDouble(b)); 
 					}else if(operator == '*') {
 						holder = "" +  df.format(Double.parseDouble(a) * Double.parseDouble(b)); 
+					}else if(operator == '|') {
+						holder = "" +  df.format(Math.abs(Double.parseDouble(b))); 
 					}else if(operator == '√') {
 						holder = "" +  df.format(Math.sqrt(Double.parseDouble(b)));
 //						System.out.println("operator error number XX with a & b & operator of : ");
@@ -378,8 +406,14 @@ public class nonLinearLinkSolver {
 					//System.out.println("holder " + holder);
 				}
 				formula = formula.substring(0,beg) + holder + formula.substring(end,formula.length());
+				operator = ' ';
+				beg = -1;
+				end = 0;
+				holder = "";
+				a = "";
+				b = "";
 				if(print) {
-					System.out.println(formula);
+					System.out.println("f12 : " + formula);
 				}
 				}
 			}

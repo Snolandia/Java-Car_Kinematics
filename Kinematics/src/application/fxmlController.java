@@ -1,6 +1,8 @@
 package application;
 
 
+import TestPackage.TestButton;
+import TestPackage.loadTestValues;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -12,7 +14,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import values.Calculated;
 import values.Statics;
 
 public class fxmlController {
@@ -58,8 +59,9 @@ public class fxmlController {
 	}
 	
 	@FXML private void testButton() {
-		Calculated.calculateLinksMovements(0);
-		System.out.println("Link movements Tested");
+		TestButton.testButton(spinnerList);
+		//Calculated.calculateLinksMovements(0);
+		//System.out.println("Link movements Tested");
 	}
 	
 	vehicleBuilder vehicle = new vehicleBuilder();
@@ -404,48 +406,48 @@ public class fxmlController {
 		renderView.getChildren().add(vehicle.group);
 		vehicle.setHeightWidth();
 		setupSpinners();
-		loader();
+		loadTestValues();
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void loader() {
+	public void loadTestValues() {
 		
-		loader.initialLoad();
+		loadTestValues.initialLoad();
 		
-		frontTireWidthSpinner.getValueFactory().setValue(loader.frontTireWidth);
-		frontTireDiameterSpinner.getValueFactory().setValue(loader.frontTireDiameter);
-		frontTireRatioSpinner.getValueFactory().setValue(loader.frontTireRatio);
-		frontTireOffsetSpinner.getValueFactory().setValue(loader.frontTireOffset);
-		rearTireWidthSpinner.getValueFactory().setValue(loader.rearTireWidth);
-		rearTireDiameterSpinner.getValueFactory().setValue(loader.rearTireDiameter);
-		rearTireRatioSpinner.getValueFactory().setValue(loader.rearTireRatio);
-		rearTireOffsetSpinner.getValueFactory().setValue(loader.rearTireOffset);
-		frontCamberSpinner.getValueFactory().setValue(loader.frontCamber);
-		frontToeSpinner.getValueFactory().setValue(loader.frontToe);
-		frontRideHeightSpinner.getValueFactory().setValue(loader.frontRideHeight);
-		frontSuspensionTravelSpinner.getValueFactory().setValue(loader.frontSuspensionTravel);
-		rearCamberSpinner.getValueFactory().setValue(loader.rearCamber);
-		rearToeSpinner.getValueFactory().setValue(loader.rearToe);
-		rearRideHeightSpinner.getValueFactory().setValue(loader.rearRideHeight);
-		rearSuspensionTravelSpinner.getValueFactory().setValue(loader.rearSuspensionTravel);
-		wheelbaseSpinner.getValueFactory().setValue(loader.wheelbase);
-		frontTrackSpinner.getValueFactory().setValue(loader.frontTrack);
-		rearTrackSpinner.getValueFactory().setValue(loader.rearTrack);
-		weightSpinner.getValueFactory().setValue(loader.weight);
-		chassisStiffnessSpinner.getValueFactory().setValue(loader.chassisStiffness);
-		cogXSpinner.getValueFactory().setValue(loader.cog[0]);
-		cogYSpinner.getValueFactory().setValue(loader.cog[1]);
-		cogZSpinner.getValueFactory().setValue(loader.cog[2]);
+		frontTireWidthSpinner.getValueFactory().setValue(loadTestValues.frontTireWidth);
+		frontTireDiameterSpinner.getValueFactory().setValue(loadTestValues.frontTireDiameter);
+		frontTireRatioSpinner.getValueFactory().setValue(loadTestValues.frontTireRatio);
+		frontTireOffsetSpinner.getValueFactory().setValue(loadTestValues.frontTireOffset);
+		rearTireWidthSpinner.getValueFactory().setValue(loadTestValues.rearTireWidth);
+		rearTireDiameterSpinner.getValueFactory().setValue(loadTestValues.rearTireDiameter);
+		rearTireRatioSpinner.getValueFactory().setValue(loadTestValues.rearTireRatio);
+		rearTireOffsetSpinner.getValueFactory().setValue(loadTestValues.rearTireOffset);
+		frontCamberSpinner.getValueFactory().setValue(loadTestValues.frontCamber);
+		frontToeSpinner.getValueFactory().setValue(loadTestValues.frontToe);
+		frontRideHeightSpinner.getValueFactory().setValue(loadTestValues.frontRideHeight);
+		frontSuspensionTravelSpinner.getValueFactory().setValue(loadTestValues.frontSuspensionTravel);
+		rearCamberSpinner.getValueFactory().setValue(loadTestValues.rearCamber);
+		rearToeSpinner.getValueFactory().setValue(loadTestValues.rearToe);
+		rearRideHeightSpinner.getValueFactory().setValue(loadTestValues.rearRideHeight);
+		rearSuspensionTravelSpinner.getValueFactory().setValue(loadTestValues.rearSuspensionTravel);
+		wheelbaseSpinner.getValueFactory().setValue(loadTestValues.wheelbase);
+		frontTrackSpinner.getValueFactory().setValue(loadTestValues.frontTrack);
+		rearTrackSpinner.getValueFactory().setValue(loadTestValues.rearTrack);
+		weightSpinner.getValueFactory().setValue(loadTestValues.weight);
+		chassisStiffnessSpinner.getValueFactory().setValue(loadTestValues.chassisStiffness);
+		cogXSpinner.getValueFactory().setValue(loadTestValues.cog[0]);
+		cogYSpinner.getValueFactory().setValue(loadTestValues.cog[1]);
+		cogZSpinner.getValueFactory().setValue(loadTestValues.cog[2]);
 		
 		for(int frontRear = 0;frontRear<2;frontRear++) {
 			for(int linkNumber = 0;linkNumber<5;linkNumber++) {
 				for(int inboardOutboard = 0;inboardOutboard<2;inboardOutboard++) {
 					for(int xYZ = 0;xYZ<3;xYZ++) {
 						if(frontRear == 0) {
-							((Spinner<Double>)((HBox)((VBox)frontSuspensionPane.getChildren().get(linkNumber)).getChildren().get(xYZ+1)).getChildren().get(inboardOutboard+1)).getValueFactory().setValue(loader.linkArray[frontRear][linkNumber][inboardOutboard][xYZ]);
+							((Spinner<Double>)((HBox)((VBox)frontSuspensionPane.getChildren().get(linkNumber)).getChildren().get(xYZ+1)).getChildren().get(inboardOutboard+1)).getValueFactory().setValue(loadTestValues.linkArray[frontRear][linkNumber][inboardOutboard][xYZ]);
 						}
 						if(frontRear == 1) {
-							((Spinner<Double>)((HBox)((VBox)rearSuspensionPane.getChildren().get(linkNumber)).getChildren().get(xYZ+1)).getChildren().get(inboardOutboard+1)).getValueFactory().setValue(loader.linkArray[frontRear][linkNumber][inboardOutboard][xYZ]);
+							((Spinner<Double>)((HBox)((VBox)rearSuspensionPane.getChildren().get(linkNumber)).getChildren().get(xYZ+1)).getChildren().get(inboardOutboard+1)).getValueFactory().setValue(loadTestValues.linkArray[frontRear][linkNumber][inboardOutboard][xYZ]);
 						}
 					}
 				}
