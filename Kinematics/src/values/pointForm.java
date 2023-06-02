@@ -55,11 +55,11 @@ public class pointForm {
 		return dOF;
 	}
 	
-	public Boolean getShared() {
+	public boolean getShared() {
 		return shared;
 	}
 	
-	public Boolean getFixed() {
+	public boolean getFixed() {
 		return fixed;
 	}
 	

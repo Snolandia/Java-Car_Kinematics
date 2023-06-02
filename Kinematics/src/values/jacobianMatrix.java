@@ -12,6 +12,7 @@ public class jacobianMatrix {
 	
 	public jacobianMatrix(String[] functionsArray, String[] variableArray, rigidBodyForm rForm) {
 		
+		//boolean print = true;
 		boolean print = false;
 		
 		if(print) {
@@ -64,8 +65,8 @@ public class jacobianMatrix {
 	private String calculatePartialDerivative(String top, String bottom) {
 		
 		String partialDerivative;
+		//boolean print = true;
 		boolean print = false;
-		
 		
 		if(top.contains(")")) {
 			partialDerivative = locateVariableInParenthesis(top,bottom);
@@ -90,10 +91,16 @@ public class jacobianMatrix {
 			partialDerivative = partiallyDeriveModifiedString(partialDerivative,bottom);
 			if(print) {
 				System.out.println("partially Derive : " + partialDerivative);
-				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 			}
 			partialDerivative = simplify(partialDerivative);
+			if(print) {
+				System.out.println("simplify : " + partialDerivative);
+			}
 			partialDerivative = replaceConstants(partialDerivative);
+			if(print) {
+				System.out.println("replace constants : " + partialDerivative);
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+			}
 		}
 		
 		return partialDerivative;
@@ -114,11 +121,6 @@ public class jacobianMatrix {
 		int beg = 0;
 		ArrayList<pointForm> points = rigid.getPointList();
 		
-		//System.out.println(holder);
-		
-		//if(holder.equals("-%1i%*%10Z%+%1i%*%4Z%")) {
-		//	isVariable = false;
-		//}
 		
 		for(int i = 0;i<holder.length();i++) {
 			isVariable = false;
@@ -131,6 +133,9 @@ public class jacobianMatrix {
 						count = i-2;
 						do {
 							if (Character.isDigit(holder.charAt(count))==false) {
+								if (holder.charAt(count)=='-') {
+									opValue = holder.charAt(count) + opValue;
+								}
 								break;
 							}
 							opValue = holder.charAt(count) + opValue;
@@ -218,22 +223,17 @@ public class jacobianMatrix {
 		int end1 = 0;
 		int count = 0;
 		
-		//System.out.println("old String : " + holder);
 		
 		if(holder.contains("*1")||holder.contains("1*")) {
 			for(int i = 0; i<holder.length()-1;i++) {
-				//System.out.println(holder.substring(i,i+2));
 				if(holder.substring(i,i+2).equals("*1")||holder.substring(i,i+2).equals("1*")) {
 						holder = holder.substring(0,i) + holder.substring(i+2,holder.length());	
 				}
 			}
 		}
-		
-		//System.out.println("semi mod String : " + holder);
-		//if(holder.contains("+%1i%*%4Z%-%1i%*%2Z%")) {
-		//	skip = false;
-		//}
-		
+		if(holder.contains("(")) {
+			
+		}else {
 		for(int i = 0; i<holder.length()-1;i++) {
 			if(holder.charAt(i)=='%') {
 				if(i==0) {
@@ -382,17 +382,21 @@ public class jacobianMatrix {
 				}
 			}
 		}
-		
+		}
 		modifiedString = holder;
 		
-		//System.out.println("new string simplified : " + modifiedString);
 		
 		return modifiedString;
 	}
 	
 	private String partiallyDeriveModifiedString(String string, String variable) {
 		
+		//boolean print = true;
+		boolean print = false;
+		
+		
 		String modifiedString = "error";
+		String originalString = string;
 		String holder = "";
 		String miniHolder;
 		String variableHolder;
@@ -400,7 +404,27 @@ public class jacobianMatrix {
 		String valueOp = "";
 		String operation = "";
 		String expoValue = "";
+		String preModString = "";
+		String littleHolder = "";
+		String oper = "";
+		String oper2 = "";
+		String derivedValue = "";
+		String tinyHolder;
+		String replaceHolder = "error";
+		int pars2 = 0;
+		int beg;
+		int end;
+		int pars;
 		int count;
+		boolean open = true;
+		boolean derived = false;
+		int negCount = 0;
+		
+		if(print) {
+			System.out.println("-------------------------------------------------------------------------------");
+			System.out.println("String of : " + string);
+			System.out.println("variable of : " + variable);
+		}
 		
 		if(string.contains("%" + variable + "%") & string.contains(")")==false & string.contains("(")==false) {
 			modifiedString = "";
@@ -548,14 +572,297 @@ public class jacobianMatrix {
 				}
 				
 				}
-//				if (holder.contains(variable)) {
-//					if(i == string.length()-1) {
-//						modifiedString = modifiedString + holder;
-//					}else if(string.charAt(i+1)=='+' || string.charAt(i+1)=='-') {
-//						modifiedString = modifiedString + holder;
-//					}
-//				}
 			}
+		}else {
+			littleHolder = "error";
+			oper = "error";
+			oper2 = "error";
+			derivedValue = "error";
+			tinyHolder = "error";
+			replaceHolder = "error";
+			holder = "error";
+			open = true;
+			derived = false;
+			negCount = 0;
+			beg = 0;
+			end = 0;
+			pars = 0;
+			modifiedString = "nothing happened for variable of  :  " + variable;
+			miniHolder = "error";
+			pars2 = 0;
+			
+			for(int i = 0;i<string.length();i++) {
+				if(string.charAt(i)=='%') {
+					beg = i;
+					holder = "" + string.charAt(i);
+					i++;
+					do {
+						if(string.charAt(i)=='%') {
+							holder += string.charAt(i);
+							i++;
+							break;
+						}
+						holder += string.charAt(i);
+						i++;
+					}while(i<string.length());
+					if(holder.contains("%" + variable + "%")) {
+						string = "0" + string.substring(0,beg)+"1"+string.substring(i,string.length());
+					}else {
+						string = "0" + string.substring(0,beg)+"0"+string.substring(i,string.length());
+					}
+					
+					break;
+				}
+			}
+			
+			for(int i = 0;i<string.length();i++) {
+				count = i;
+				if(string.charAt(i)=='(') {
+					pars++;
+				}else if(string.charAt(i)==')') {
+					pars--;
+				}else if(string.charAt(i)=='%') {
+					pars = 0;
+					oper = "";
+					holder = "";
+					beg = i;
+					do {
+						if(string.charAt(beg)=='(') {
+							pars = 1;
+							break;
+						}else if(pars == 0 && (string.charAt(beg)=='*' || string.charAt(beg)=='/')) {
+							oper = "*";
+						}else if(pars == 0 && (string.charAt(beg)=='+' || string.charAt(beg)=='-')) {
+							oper = "+";
+						}
+						beg --;
+					}while(beg>0);
+					
+					do {
+						holder += string.charAt(i);
+						if(string.charAt(i)=='%') {
+							i++;
+							end = i;
+							do {
+								if(string.charAt(end)=='(') {
+									pars++;
+								}else if(string.charAt(end)==')') {
+									pars--;
+									if (pars == 0) {
+										break;
+									}
+								}else if(pars == 1 && (string.charAt(end)=='*' || string.charAt(end)=='/')) {
+									oper = "*";
+								}else if(pars == 1 && (string.charAt(end)=='+' || string.charAt(end)=='-')) {
+									oper = "+";
+								}
+								end ++;
+							}while(end<string.length());
+							break;
+						}
+						i++;
+					}while(i<string.length());
+					
+					littleHolder = string.substring(beg,end+1);
+					
+					//if(littleHolder.contains("%" + variable + "%")) {
+					if(true) {
+						pars2 = 0;
+						count = end;
+						negCount = beg;
+						oper2 = "";
+						open = true;
+						do {
+							if(negCount>=0) {
+								if(string.charAt(negCount)=='('  && open) {
+									pars2++;
+									if(pars2>0) {
+										do {
+											if(string.charAt(count)==')') {
+												pars2--;
+												if(pars2==0) {
+													count++;
+													break;
+												}
+											}else if(string.charAt(count)=='(') {
+												pars2++;
+											}
+											count++;
+										}while(count<string.length());
+									}
+								}
+								else if(string.charAt(negCount)=='+'|| string.charAt(negCount)=='-') {
+									if(pars2 == 0) {
+										oper2 = "+";
+										open = false;
+										break;
+									}
+								}else if(negCount > 0 && string.charAt(negCount)=='-' && (string.charAt(negCount)=='+' || string.charAt(negCount)=='-')) {
+									if(pars2 == 0) {
+										oper2 = "+";
+										open = false;
+										negCount --;
+										break;
+									}
+								}else if(string.charAt(negCount)==')') {
+									pars2--;
+								}
+								negCount --;
+								if(negCount<0) {
+									negCount = 0;
+									System.out.println("negCount error ---------------------------------" + pars2);
+									open = false;
+								}else {
+									if(pars == 0 && (string.charAt(negCount)=='+'|| string.charAt(negCount)=='-')) {
+										open = false;
+									}
+								}
+							}
+							
+							if(count<string.length()) {
+								if(string.charAt(count)==')' && open) {
+									pars2++;
+									if(pars2>0) {
+										do {
+											if(string.charAt(negCount)=='(') {
+												pars2--;
+												if(pars2==0) {
+													negCount--;
+													break;
+												}
+											}else if(string.charAt(negCount)==')') {
+												pars2++;
+											}
+											negCount--;
+										}while(negCount>0);
+									}
+								}else if(string.charAt(count)=='+'|| string.charAt(count)=='-') {
+									if(pars2 == 0) {
+										oper2 = "+";
+										open = false;
+										count++;
+										break;
+									}
+								}else if(count < string.length() && string.charAt(count)=='-' && (string.charAt(count)=='+' || string.charAt(count)=='-')) {
+									if(pars2 == 0) {
+										oper2 = "+";
+										open = false;
+										count ++;
+										break;
+									}
+								}else if(string.charAt(count)=='(') {
+									pars2--;
+								}
+								
+								if(string.charAt(count)==')' && open == false) {
+									count++;
+								}
+								if(open) {
+									count ++;
+								}
+								if(count>string.length()) {
+									count = string.length();
+									System.out.println("count error ---------------------------------" + pars2);
+									open = false;
+								}else {
+									if(pars == 0 && (string.charAt(count)=='+'|| string.charAt(count)=='-')) {
+										count++;
+										open = false;
+									}
+								}
+							}
+							
+						}while(open && (negCount>=0||count<string.length()));
+						miniHolder = string.substring(negCount,count);
+						replaceHolder = "";
+						if(littleHolder.contains("*")||littleHolder.contains("/")) {
+							if(miniHolder.contains("%" + variable + "%")) {
+								replaceHolder = littleHolder;
+							}else {
+								replaceHolder = miniHolder.charAt(0) + "0" + miniHolder.charAt(miniHolder.length()-1);
+								preModString = string.substring(0,negCount)+""+replaceHolder+""+string.substring(count,string.length()); 
+								derived = true;
+							}
+						}else if(littleHolder.contains("%" + variable + "%")){
+							tinyHolder = "";
+							for(int j = 0;j<littleHolder.length();j++) {
+								if(littleHolder.charAt(j)=='%') {
+									tinyHolder = "" + littleHolder.charAt(j);
+									j++;
+									do {
+										if(littleHolder.charAt(j)=='%') {
+											tinyHolder += littleHolder.charAt(j);
+											//j++;
+											break;
+										}
+										tinyHolder += littleHolder.charAt(j);
+										j++;
+									}while(j<littleHolder.length());
+									if(tinyHolder.contains("%" + variable + "%")) {
+										tinyHolder = "1";
+										derived = true;
+										
+									}else {
+										tinyHolder = "0";
+										derived = true;
+										
+									}
+									replaceHolder += tinyHolder;
+								}else {
+									if(littleHolder.charAt(j)==')') {
+										
+									}else {
+										replaceHolder += littleHolder.charAt(j);
+									}
+								}	
+							}
+							preModString = string.substring(0,negCount)+""+miniHolder.substring(0,beg-negCount)+replaceHolder+miniHolder.substring((end)-negCount,miniHolder.length())+""+string.substring(count,string.length()); 
+							
+						}else if((miniHolder.contains("*")||miniHolder.contains("/"))) {
+							if( miniHolder.contains("%" + variable + "%")){
+								replaceHolder = littleHolder;
+							}else {
+								replaceHolder = miniHolder.charAt(0) + "0" + miniHolder.charAt(miniHolder.length()-1);
+								derived = true;
+								preModString = string.substring(0,negCount)+""+replaceHolder+""+string.substring(count,string.length()); 
+								
+							}
+						}
+						if(print) {
+							//System.out.println("littleHolder : " + littleHolder);
+							//System.out.println("with oper : " + oper);
+							//System.out.println("miniHolder : " + miniHolder);
+							//System.out.println("with oper2 : " + oper2);
+						}
+					}
+				}
+				if(derived) {
+					//preModString = string.substring(0,negCount)+""+miniHolder.substring(0,beg-negCount)+replaceHolder+miniHolder.substring((end)-negCount,miniHolder.length())+""+string.substring(count,string.length()); 
+					
+					
+					i=count-(string.length()-preModString.length());
+					if(print) {
+						System.out.println("littleHolder : " + littleHolder);
+						//System.out.println("with oper : " + oper);
+						System.out.println("miniHolder : " + miniHolder);
+						//System.out.println("with oper2 : " + oper2);
+						System.out.println("changed from : " + string);
+					}
+					string = preModString;
+					if(print) {
+						System.out.println("changed string to  : " + string);
+					}
+					derived = false;
+				}
+			}
+			modifiedString = string;
+		}
+		
+		if(print) {
+			System.out.println("original string of : " + originalString);
+			System.out.println("return of : " + modifiedString);
+			System.out.println("for variable of : " + variable);
+			
 		}
 		
 		return modifiedString;
@@ -731,55 +1038,11 @@ public class jacobianMatrix {
 			modifierString = stringFunctionFinder(string,'^');
 			modifierString = exponentHandler(modifierString);
 		}else {
-//			count = 0;
-//			System.out.println("String : " +string);
-//			modifierString = "";
-//			for(int i = 1;i<string.length();i++) {
-//				if(string.charAt(i)=='(' & string.charAt(i-1)=='*' ) {
-//					end = i-1;
-//					beg = i-1;
-//					value = "";
-//					do {
-//						value = string.charAt(beg) + value;
-//						if(string.charAt(beg)=='+' || string.charAt(beg)=='-') {
-//							break;
-//						}
-//						beg--;
-//					}while(beg>=0);
-//					string = string.substring(0,beg) + string.substring(i,string.length());
-//					//i++;
-//					i = i - value.length();
-//					parCount = 1;
-//					do {
-//						if(string.charAt(i)=='(') {
-//							parCount++;
-//							if(parCount==2) {
-//								if(string.charAt(i+1)=='+'||string.charAt(i+1)=='-') {
-//									i++;
-//								}
-//								string = string.substring(0,i+1) + value + string.substring(i+1,string.length());
-//							}
-//						}else if(string.charAt(i)==')') {
-//							parCount--;
-//						}
-//						i++;
-//						if(parCount==0) {
-//							break;
-//						}
-//					}while(i<string.length());
-//					i=0;
-//					count++;
-//					if(count>50) {
-//						System.out.println("too many iterations, breaking");
-//						break;
-//					}
-//				}
-//			}
-//			
+			
 			modifierString = string;
 		}
 		
-		//System.out.println("modifier string : " + modifierString);
+		//System.out.println("modifier string for expand string: " + modifierString);
 		
 		return modifierString;
 	}
@@ -789,10 +1052,19 @@ public class jacobianMatrix {
 		String modifiedString = "error";
 		String holder = "";
 		int pars = 0;
+		boolean print = false;
+		//boolean print = true;
 		
-		//System.out.println("locate Variable of : " + bottom);
+		if(print) {
+			System.out.println("locate Variable of : " + bottom);
+			System.out.println("in function : " + top);
+		}
 		
 		if(top.contains("%" + bottom + "%")) {
+			if(top.contains("(")) {
+				modifiedString = top;
+				return modifiedString;
+			}
 			modifiedString = "";
 			for(int i = 0;i<top.length();i++) {
 				if (top.charAt(i)=='(') {
@@ -800,12 +1072,14 @@ public class jacobianMatrix {
 				}else if (top.charAt(i)==')') {
 					pars--;
 				}
+				
 				if (top.charAt(i)=='+' || top.charAt(i)=='-') {
 					holder = "" + top.charAt(i);
 				}else {
 				holder = holder + top.charAt(i);
 				
 				}
+				
 				if (holder.contains(bottom)) {
 					if(pars==0) {	
 						if(i == top.length()-1) {
@@ -820,6 +1094,10 @@ public class jacobianMatrix {
 			}
 		}
 		
+		if(print) {
+			System.out.println("returning string of : " + modifiedString);
+		}
+			
 		return modifiedString;
 		
 	}
@@ -1070,7 +1348,9 @@ public class jacobianMatrix {
 		return partialDerivative;
 	}
 	
-	
+	public String getJMatrixFormula(int a, int b) {
+		return matrix[a][b];
+	}
 	
 	
 	

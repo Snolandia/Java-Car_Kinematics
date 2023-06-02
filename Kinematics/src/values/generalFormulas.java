@@ -324,6 +324,38 @@ public static double magnitudeBetweenPoints(pointForm point1, double[] point2) {
 		return plane;
 	}
 	
+public static double normalizeValue(double[][] points,int linkCount) {
+		
+		// Returns plane in form : [X,Y,Z,D]
+		
+		double[] plane = new double[4];
+		double[][] vectors = new double[linkCount-1][3];
+		double[] normalVector = new double[3];
+		
+		//creates vectors from points given (only 2 actually needed)
+//		for(int i = 0;i<linkCount-1;i++) {
+//			for(int j = 0;j<3;j++) {
+//				vectors[i][j] = points[i][j]-points[i+1][j];
+//			}
+//		}
+		vectors[0][0] = points[1][0] - points[0][0];
+		vectors[0][1] = points[1][1] - points[0][1];
+		vectors[0][2] = points[1][2] - points[0][2];
+		vectors[1][0] = points[2][0] - points[0][0];
+		vectors[1][1] = points[2][1] - points[0][1];
+		vectors[1][2] = points[2][2] - points[0][2];
+
+		//uses first 2 vectors to calculate normal vectors of x,y,z
+		normalVector[0] = (vectors[0][1]*vectors[1][2])-(vectors[0][2]*vectors[1][1]);
+		normalVector[1] = (vectors[0][2]*vectors[1][0])-(vectors[0][0]*vectors[1][2]);
+		normalVector[2] = (vectors[0][0]*vectors[1][1])-(vectors[0][1]*vectors[1][0]);
+		double normalize =Math.sqrt(normalVector[0]*normalVector[0]
+									+normalVector[1]*normalVector[1]
+									+normalVector[2]*normalVector[2]);
+		
+		return normalize;
+	}
+	
 	public static double angleFromPlanes(double[] planeA, double[] planeB) {
 				
 		double top = Math.abs(planeA[0]*planeB[0]+planeA[1]*planeB[1]+planeA[2]*planeB[2]);

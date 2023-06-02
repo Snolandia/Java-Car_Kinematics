@@ -42,6 +42,7 @@ public class vectorForm {
 	double closestPointDistance;
 	double closestPointToPointDistance;
 	double[] closestPoint;
+	double normalizeValue;
 	pointForm point1;
 	pointForm point2;
 	pointForm planePoint1;
@@ -148,6 +149,8 @@ public class vectorForm {
 			{planePoint1.getX(),planePoint1.getY(),planePoint1.getZ()},
 			{planePoint2.getX(),planePoint2.getY(),planePoint2.getZ()},
 		};
+		
+		normalizeValue = generalFormulas.normalizeValue(points, 3);
 		
 		ABmagnitude = generalFormulas.magnitudeBetweenPoints(planePoint1, planePoint0);
 		ACmagnitude = generalFormulas.magnitudeBetweenPoints(planePoint2, planePoint0);
@@ -377,75 +380,51 @@ public class vectorForm {
 	public void createVectorFormulas() {
 		
 		
-		//ABx = (p1x-) * ratio
 		ABx = "(%" + planePoint1.getPointID() +"X%-%" + planePoint0.getPointID() + "X%)";//*" + p1RatioX + ")";
-		//ABx = "(%" + planePoint1.getPointID() +"X%-%" + planePoint0.getPointID() + "X%)";//*" + p1RatioX + ")";
-		//ACx = (p2x-p0x) * ratio
 		ACx = "(%" + planePoint2.getPointID() +"X%-%" + planePoint0.getPointID() + "X%)";//*" + p2RatioX + ")";
-		//ACx = "(%" + planePoint2.getPointID() +"X%-%" + planePoint0.getPointID() + "X%)";//*" + p2RatioX + ")";
-		
-		//ABy = (p1y-p0y) * ratio
 		ABy = "(%" + planePoint1.getPointID() +"Y%-%" + planePoint0.getPointID() + "Y%)";//*" + p1RatioY + ")";
-		//ABy = "(%" + planePoint1.getPointID() +"Y%-%" + planePoint0.getPointID() + "Y%)";//*" + p1RatioY + ")";
-		//BAy = "(%" + planePoint0.getPointID() +"Y%-%" + planePoint1.getPointID() + "Y%)";//*" + p1RatioY + ")";
-		
-		//ACy = (p2y-p0y) * ratio
 		ACy = "(%" + planePoint2.getPointID() +"Y%-%" + planePoint0.getPointID() + "Y%)";//*" + p2RatioY + ")";
-		//ACy = "(%" + planePoint2.getPointID() +"Y%-%" + planePoint0.getPointID() + "Y%)";//*" + p2RatioY + ")";
-		
-		//ABz = (p1z-p0z) * ratio
 		ABz = "(%" + planePoint1.getPointID() +"Z%-%" + planePoint0.getPointID() + "Z%)";//*" + p1RatioZ + ")";
-		//ABz = "(%" + planePoint1.getPointID() +"Z%-%" + planePoint0.getPointID() + "Z%)";//*" + p1RatioZ + ")";
-		
-		//ACz = (p2z-p0z) * ratio
 		ACz = "(%" + planePoint2.getPointID() +"Z%-%" + planePoint0.getPointID() + "Z%)";//*" + p2RatioZ + ")";
-		//ACz = "(%" + planePoint2.getPointID() +"Z%-%" + planePoint0.getPointID() + "Z%)";//*" + p2RatioZ + ")";
 		
 		String normalX = "((" + ABy + "*" + ACz + ")-(" + ABz + "*" + ACy + "))" ;
 		String normalY = "((" + ABz + "*" + ACx + ")-(" + ABx + "*" + ACz + "))" ;
 		String normalZ = "((" + ABx + "*" + ACy + ")-(" + ABy + "*" + ACx + "))" ;
-		String normalize = "(√(((" + normalX + "*" + normalX + ")+(" + normalY + "*" + normalY + "))+(" + normalZ + "*" + normalZ + ")))";
+		
+		String normalize = "(" + normalizeValue + ")";
 		String planeX = "(" + normalX + "/" + normalize + ")";
 		String planeY = "(" + normalY + "/" + normalize + ")";
 		String planeZ = "(" + normalZ + "/" + normalize + ")";
 		
 		
-		//VectorX = i((AByACz)-(ACyABz))
-		//vectorXformula = "+(i*(("+ABy+"*"+ACz+")-("+ACy+"*"+ABz+")))";
+		vectorPointX = "+(%"+vectorPoint.getPointID()+ "X%)-(+%" + planePoint0.getPointID() + "X%+((" +"((" +  ABx+"*"+df.format(ABratio)+")+((((("+df.format(ABratio2)+")*(((("+ABy+")*"+planeZ+"))-(((("+ABz+")*"+(planeY)+")))))))+((("+(planeX)+")*("+df.format(closestPointToPointDistance)+"))))))))";
 		
-		//vectorPointX = point0x + ((AByACz)-(ACyABz))
-		//vectorPointX = "0";
-		//vectorPointX = "+(%"+vectorPoint.getPointID()+ "Z%)-(+%" + planePoint0.getPointID() + "Z%+((" +"((" +  ABz+"*"+df.format(ABratio)+")+(((("+df.format(ABratio2)+"*((((0-"+ABy+")*"+plane[0]+"))+((((0-"+ABx+")*"+(plane[1])+")))))))+("+(plane[2])+"*"+df.format(closestPointToPointDistance)+"))))))";
-		vectorPointX = "+(%"+vectorPoint.getPointID()+ "X%)-(+%" + planePoint0.getPointID() + "X%+((" +"((" +  ABx+"*"+df.format(ABratio)+")+((((("+ABratioSign+"1*"+df.format(ABratio2)+")*((((0-"+ABz+")*"+planeY+"))+((((0-"+ABy+")*"+(planeZ)+")))))))+((("+(planeX)+")*("+df.format(closestPointToPointDistance)+"))))))))";
-		vectorPointX = "+(%"+vectorPoint.getPointID()+ "X%)-(+%" + planePoint0.getPointID() + "X%+((" +"((" +  ABx+"*"+df.format(ABratio)+")+((((("+ABratioSign+"1*"+df.format(ABratio2)+")*(((("+ABz+")*"+plane[1]+"))+((((0-"+ABy+")*"+(plane[2])+")))))))+("+(plane[0])+"*"+df.format(closestPointToPointDistance)+"))))))";
-		vectorPointX = ABz + "-" + ABz;
-		vectorPointX = "+(%"+vectorPoint.getPointID()+ "X%)-(+%" + planePoint0.getPointID() + "X%+((" +"((" +  ABx+"*"+df.format(ABratio)+")+(((("+df.format(ABratio2)+"*(((("+ABy+")*"+df.format(plane[2])+"))-(((("+ABz+")*"+(df.format(plane[1]))+")))))))+("+(df.format(plane[0]))+"*"+df.format(closestPointToPointDistance)+"))))))";
-		vectorPointZ = "+(%"+vectorPoint.getPointID()+ "Z%)-(+%" + planePoint0.getPointID() + "Z%+((" +"((" +  ABz+"*"+df.format(ABratio)+")+((((("+df.format(ABratio2)+")*(((("+ABx+")*"+planeY+"))-(((("+ABy+")*"+(planeX)+")))))))+((("+(planeZ)+")*("+df.format(closestPointToPointDistance)+"))))))))";
-		
-		//vectorPointX = "+(%"+vectorPoint.getPointID()+ "X%)-(+%" + planePoint0.getPointID() + "X%+(" +"((+"+ABx+"*"+ABratio+")-(+"+ABratio2+"*((+"+ABy+"*"+planeZ+")+(+"+ABz+"*"+planeY+"))))+("+planeX+"*"+closestPointToPointDistance+")))";
-		
-		//VectorY = j((ACxABz)-(ABxACz))
-		//vectorYformula = "+(j*(("+ACx+"*"+ABz+")-("+ABx+"*"+ACz+")))";
-		
-		//vectorPointY = point0y + j((ACxABz)-(ABxACz))
-		//vectorPointY = "0";
-		//vectorPointY = "+(%"+vectorPoint.getPointID()+ "Z%)-(+%" + planePoint0.getPointID() + "Z%+((" +"((" +  ABz+"*"+df.format(ABratio)+")+(((("+df.format(ABratio2)+"*((((0-"+ABy+")*"+plane[0]+"))+((((0-"+ABx+")*"+(plane[1])+")))))))+("+(plane[2])+"*"+df.format(closestPointToPointDistance)+"))))))";
-		
-		//vectorPointY = "+(%"+vectorPoint.getPointID()+ "Y%)-(+%" + planePoint0.getPointID() + "Y%+((" +"((" +  ABy+"*"+df.format(ABratio)+")+((((("+ABratioSign+"1*"+df.format(ABratio2)+")*((((0-"+ABx+")*"+planeZ+"))+((((0-"+ABz+")*"+(planeX)+")))))))+((("+(planeY)+")*("+df.format(closestPointToPointDistance)+"))))))))";
-
-		vectorPointY = "+(%"+vectorPoint.getPointID()+ "Y%)-(+%" + planePoint0.getPointID() + "Y%+((" +"((" +  ABy+"*"+df.format(ABratio)+")+(((("+df.format(ABratio2)+"*(((("+ABz+")*"+df.format(plane[0])+"))-(((("+ABx+")*"+(df.format(plane[2]))+")))))))+("+(df.format(plane[1]))+"*"+df.format(closestPointToPointDistance)+"))))))";
 		vectorPointY = "+(%"+vectorPoint.getPointID()+ "Y%)-(+%" + planePoint0.getPointID() + "Y%+((" +"((" +  ABy+"*"+df.format(ABratio)+")+((((("+df.format(ABratio2)+")*(((("+ABz+")*"+planeX+"))-(((("+ABx+")*"+(planeZ)+")))))))+((("+(planeY)+")*("+df.format(closestPointToPointDistance)+"))))))))";
 		
-		//vectorPointY = ABz + "-" + ABz;
-		//vectorPointY ="+(%"+vectorPoint.getPointID()+  "Y%)-(+%" + planePoint0.getPointID() + "Y%+(" +"((+"+ACy+"*"+ACratio+")-(+"+ACratio2+"*((+"+ACx+"*"+planeZ+")+(+"+ACz+"*"+planeX+"))))+("+planeY+"*"+closestPointToPointDistance+")))";
-		
-		//VectorZ = k((ABxACy)-(AByACx))
-		//vectorZformula = "+(k*(("+ABx+"*"+ACy+")-("+ABy+"*"+ACx+")))";
-		
-		//vectorPointZ = point0z + k((ABxACy)-(AByACx))
-		//vectorPointZ = "+(%"+vectorPoint.getPointID()+ "Z%)-(+%" + planePoint0.getPointID() + "Z%+(" +"((+"+ABz+"*"+df.format(ABratio)+")-(+"+ABratio2+"*((+"+ABy+"*"+planeX+")+(+"+ABx+"*"+planeY+"))))+("+planeZ+"*"+closestPointToPointDistance+")))";
-		vectorPointZ = "+(%"+vectorPoint.getPointID()+ "Z%)-(+%" + planePoint0.getPointID() + "Z%+((" +"((" +  ABz+"*"+df.format(ABratio)+")+(((("+df.format(ABratio2)+"*(((("+ABx+")*"+df.format(plane[1])+"))-(((("+ABy+")*"+(df.format(plane[0]))+")))))))+("+(df.format(plane[2]))+"*"+df.format(closestPointToPointDistance)+"))))))";
 		vectorPointZ = "+(%"+vectorPoint.getPointID()+ "Z%)-(+%" + planePoint0.getPointID() + "Z%+((" +"((" +  ABz+"*"+df.format(ABratio)+")+((((("+df.format(ABratio2)+")*(((("+ABx+")*"+planeY+"))-(((("+ABy+")*"+(planeX)+")))))))+((("+(planeZ)+")*("+df.format(closestPointToPointDistance)+"))))))))";
+//		normalX = "((" + ABy + "*" + ACz + ")-(" + ABz + "*" + ACy + "))" ;
+//		normalY = "((" + ABz + "*" + ACx + ")-(" + ABx + "*" + ACz + "))" ;
+//		normalZ = "((" + ABx + "*" + ACy + ")-(" + ABy + "*" + ACx + "))" ;
+//		//Normalize should be constant throughout 
+//		normalize = "" + df.format(1/normalizeValue) + "";
+//		String Px = "%" + planePoint0.getPointID() +"X%";
+//		String Py = "%" + planePoint0.getPointID() +"Y%";
+//		String Pz = "%" + planePoint0.getPointID() +"Z%";
+//		String Ax = "%" + planePoint1.getPointID() +"X%";
+//		String Ay = "%" + planePoint1.getPointID() +"Y%";
+//		String Az = "%" + planePoint1.getPointID() +"Z%";
+//		String Bx = "%" + planePoint2.getPointID() +"X%";
+//		String By = "%" + planePoint2.getPointID() +"Y%";
+//		String Bz = "%" + planePoint2.getPointID() +"Z%";
+//		//String normalize = "(√(((" + normalX + "*" + normalX + ")+(" + normalY + "*" + normalY + "))+(" + normalZ + "*" + normalZ + ")))";
+//		planeX = "((((((((("+ Ay + "*" + Bz + "))"+"-"+"("+ Ay + "*" + Pz + "))"+"-"+"("+ Py + "*" + Bz + "))"+"+"+"("+ Py + "*" + Pz + "))"+"-"+"("+ Az + "*" + By + "))"+"+"+"("+ Az + "*" + Py + "))"+"+"+"("+ Pz + "*" + By + "))"+"-"+"("+ Pz + "*" + Py + "))";
+//		//planeX = "(" + normalX + ")";
+//		planeY = "" + normalY + "";
+//		planeZ = "" + normalZ + "";
+//		String AbxPlaneY = "(%" + planePoint1.getPointID() +"X%*%";
+//		String AbyPlaneX = "";
+//		vectorPointZ = "+(%"+vectorPoint.getPointID()+ "Z%)-(+%" + planePoint0.getPointID() + "Z%+((" +"((" +  ABz+"*"+df.format(ABratio)+")+((((("+df.format(ABratio2)+"*"+normalize+""+")*(((("+ABx+")*"+planeY+"))-(((("+ABy+")*("+planeX+"))))))))+(((("+planeZ+")*("+df.format(closestPointToPointDistance)+"))*("+normalize+"))))))))";
+		
 		//vectorPointZ = ABz + "-" + ABz;
 		//Vector = i((AByACz)-(ACyABz))+j((ACxABz)-(ABxACz))+k((ABxACy)-(AByACx))
 		//vectorFormula = "+(i*((AByACz)-(ACyABz))+j((ACxABz)-(ABxACz))+k((ABxACy)-(AByACx)))";
