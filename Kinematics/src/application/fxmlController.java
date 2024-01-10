@@ -12,6 +12,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import values.Statics;
@@ -403,7 +404,19 @@ public class fxmlController {
 	
 	@FXML public void addRender() throws Exception{
 		vehicle.createVehicle();
-		renderView.getChildren().add(vehicle.group);
+		 BorderPane borderPane = new BorderPane();
+//       borderPane.getChildren().add(subScene);
+		 borderPane.setCenter(vehicle.group.getChildren().get(0));
+//       borderPane
+//		renderView.getChildren().add(vehicle.group.getChildren().get(0));
+		renderView.getChildren().add(borderPane);
+//		borderPane.setManaged(false);
+		
+		AnchorPane.setBottomAnchor(borderPane, 0.0);
+		AnchorPane.setTopAnchor(borderPane, 0.0);
+		AnchorPane.setLeftAnchor(borderPane, 0.0);
+		AnchorPane.setRightAnchor(borderPane, 0.0);
+//		renderView.set
 		vehicle.setHeightWidth();
 		setupSpinners();
 		loadTestValues();

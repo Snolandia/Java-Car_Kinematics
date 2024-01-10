@@ -1,11 +1,17 @@
-module HelloWorld {
-	requires javafx.controls;
+module VehicleKinematics {
+	exports moreShapes;
+	exports application;
+	exports util;
+	exports values;
+	exports Jama;
+	exports gui;
+	exports main;
+	exports TestPackage;
+
 	requires java.net.http;
-	requires java.desktop;
-	requires javafx.graphics;
-	requires javafx.fxml;
 	requires javafx.base;
+	requires javafx.controls;
+	requires javafx.fxml;
+	requires javafx.graphics;
 	requires jimStlMeshImporterJFX;
-	
-	opens application to javafx.graphics, javafx.fxml;
 }

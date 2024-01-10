@@ -10,6 +10,7 @@ import javafx.scene.SubScene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
@@ -228,9 +229,9 @@ public class vehicleBuilder extends Group {
     }
     
     public void setHeightWidth() {
-    	
-    	subScene.widthProperty().bind(((AnchorPane)group.getParent()).widthProperty());
-    	subScene.heightProperty().bind(((AnchorPane)group.getParent()).heightProperty());
+
+    	subScene.widthProperty().bind(((BorderPane)subScene.getParent()).widthProperty());
+    	subScene.heightProperty().bind(((BorderPane)subScene.getParent()).heightProperty());
     	
     }
     
@@ -249,11 +250,16 @@ public class vehicleBuilder extends Group {
 
         subScene = new SubScene(root, 400, 400, true, SceneAntialiasing.BALANCED);
         subScene.setFill(Color.GREY);
+//        subScene.
                 
         handleKeyboard(subScene, suspensionLinksGroupForm);
         handleMouse(subScene, suspensionLinksGroupForm);
-
+       
+        
         subScene.setCamera(camera);
+        subScene.setManaged(false);
+        
+//        group.getChildren().add(borderPane);
         group.getChildren().add(subScene);
     	
     	return group;

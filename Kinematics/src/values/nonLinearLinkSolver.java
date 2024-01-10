@@ -211,7 +211,7 @@ public class nonLinearLinkSolver {
 		
 	}
 	
-	private static double[] newtonRasph(int x,double[] fxN,jacobianMatrix jMatrix) {
+	private static double newtonRasph(int x,double[] fxN,jacobianMatrix jMatrix) {
 		
 		boolean print = false;
 		
@@ -236,11 +236,11 @@ public class nonLinearLinkSolver {
            // double[][] J = jacobian.apply(x);
         	for(int i = 0;i<functionsArray.length;i++) {
     			sum = 404;
-    			for(int j = 0;j<variablesArray.length;j++) {
-    				evaluation = evaluate(jMatrix.getJMatrixFormula(i, j));
+    			for(int y = 0;y<variablesArray.length;y++) {
+    				evaluation = evaluate(jMatrix.getJMatrixFormula(i, y));
     				evaluation = Math.round(evaluation*100000000.0);
     				evaluation = evaluation/100000000.0;
-    				jSolved[i][j] = evaluation;
+    				jSolved[i][y] = evaluation;
     				sum += evaluation;
     				if(print) {
     					System.out.print(df.format(evaluation)+" | ");

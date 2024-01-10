@@ -1,0 +1,1512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox minHeight="500.0" minWidth="850.0" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar minHeight="25.0" VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" minWidth="850.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <items>
+        
+        <AnchorPane fx:id="leftView" maxWidth="210.0" minHeight="0.0" minWidth="210.0">
+               <children>
+                  <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Accordion minHeight="0.0">
+                          <panes>
+                            <TitledPane animated="false" minHeight="0.0" prefWidth="210.0" text="Front Suspension">
+                              <content>
+                                    <ScrollPane hbarPolicy="NEVER" minHeight="0.0" prefWidth="210.0">
+                                       <content>
+                                          <VBox fx:id="frontSuspensionPane" maxWidth="190.0" minHeight="0.0" minWidth="190.0" prefWidth="190.0">
+                                             <children>
+                                                <VBox minHeight="0.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="30.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 1 :" wrappingWidth="42.3203125">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF1iX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF1oX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF1iY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF1oY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF1iZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF1oZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox minHeight="0.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="30.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 2 :" wrappingWidth="42.3203125">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF2iX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF2oX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF2iY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF2oY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF2iZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF2oZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox minHeight="0.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="30.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 3 :" wrappingWidth="42.3203125">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF3iX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF3oX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF3iY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF3oY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF3iZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF3oZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox minHeight="0.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="30.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 4 :" wrappingWidth="42.3203125">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF4iX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF4oX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF4iY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF4oY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF4iZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF4oZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox minHeight="0.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="30.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 5 :" wrappingWidth="42.3203125">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF5iX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF5oX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF5iY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF5oY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerF5iZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerF5oZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                              </content>
+                            </TitledPane>
+                              <TitledPane animated="false" minHeight="0.0" prefWidth="210.0" text="Rear Suspension">
+                                 <content>
+                                    <ScrollPane hbarPolicy="NEVER" minHeight="0.0" prefWidth="210.0">
+                                       <content>
+                                          <VBox fx:id="rearSuspensionPane" maxWidth="190.0" minHeight="0.0" minWidth="190.0" prefWidth="190.0">
+                                             <children>
+                                                <VBox minHeight="0.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="30.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 1 :" wrappingWidth="42.3203125">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR1ix" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR1oX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR1iY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR1oY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR1iZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR1oZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox minHeight="0.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="30.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 2 :" wrappingWidth="42.3203125">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR2iX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR2oX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR2iY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR2oY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR2iZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR2oZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox minHeight="0.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="30.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 3 :" wrappingWidth="42.3203125">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR3iX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR3oX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR3iY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR3oY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR3iZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR3oZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox minHeight="0.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="30.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 4 :" wrappingWidth="42.3203125">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR4iX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR4oX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR4iY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR4oY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR4iZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR4oZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <VBox minHeight="0.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="30.0" prefWidth="200.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Link 5 :" wrappingWidth="42.3203125">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inboard Coordinates" wrappingWidth="72.4140625" />
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Outboard Coordinates" wrappingWidth="91.587890625" />
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  X:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR5iX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR5oX" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Y:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR5iY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR5oY" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                      <HBox prefHeight="10.0" prefWidth="208.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Z:" wrappingWidth="31.13671875">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="spinnerR5iZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="spinnerR5oZ" initialValue="0.0" max="1000" min="-1000" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="75.0">
+                                                            	<editable>true</editable>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                               </HBox.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane animated="false" minHeight="0.0" prefWidth="210.0" text="General Vehicle">
+                                <content>
+                                    <ScrollPane hbarPolicy="NEVER" minHeight="0.0" minWidth="200.0">
+                                       <content>
+                                          <VBox maxWidth="190.0" minHeight="0.0" minWidth="190.0" prefWidth="190.0">
+                                             <children>
+                                                <VBox prefWidth="202.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Front Tire">
+                                                         <VBox.margin>
+                                                            <Insets bottom="2.0" left="5.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                      <GridPane>
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="126.0" />
+                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.0" minWidth="10.0" prefWidth="76.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                          <RowConstraints vgrow="SOMETIMES" />
+                                                          <RowConstraints vgrow="SOMETIMES" />
+                                                          <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Width:">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Diameter:" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ratio:" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Offset:" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="frontTireWidthSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="frontTireDiameterSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                              <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="frontTireRatioSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="frontTireOffsetSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                      </GridPane>
+                                                   </children>
+                                                </VBox>
+                                                <VBox layoutX="10.0" layoutY="10.0" prefWidth="190.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rear Tire">
+                                                         <VBox.margin>
+                                                            <Insets bottom="2.0" left="5.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                      <GridPane>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="126.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.0" minWidth="10.0" prefWidth="76.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Width:">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Diameter:" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ratio:" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Offset:" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="rearTireWidthSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="rearTireDiameterSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="rearTireRatioSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="rearTireOffsetSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </VBox>
+                                                <VBox layoutX="10.0" layoutY="10.0" prefWidth="202.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Front Suspension">
+                                                         <VBox.margin>
+                                                            <Insets bottom="2.0" left="5.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                      <GridPane>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="126.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.0" minWidth="10.0" prefWidth="76.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Camber:">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Toe:" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ride Height:" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Suspension Travel:" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="frontCamberSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="frontToeSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="frontRideHeightSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="frontSuspensionTravelSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </VBox>
+                                                <VBox layoutX="10.0" layoutY="248.0" prefWidth="202.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rear Suspension">
+                                                         <VBox.margin>
+                                                            <Insets bottom="2.0" left="5.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                      <GridPane>
+                                                         <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="126.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.0" minWidth="10.0" prefWidth="76.0" />
+                                                         </columnConstraints>
+                                                         <rowConstraints>
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                         </rowConstraints>
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Camber:">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Toe:" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ride Height:" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Suspension Travel:" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="rearCamberSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="rearToeSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="rearRideHeightSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="rearSuspensionTravelSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </VBox>
+                                                <GridPane>
+                                                  <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="126.66667175292969" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="75.33332824707031" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints vgrow="SOMETIMES" />
+                                                    <RowConstraints vgrow="SOMETIMES" />
+                                                    <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wheelbase:">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Text>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Front Track:" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Text>
+                                                      <Text layoutX="15.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rear Track:" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Text>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Weight:" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Text>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chasis Stiffness:" GridPane.rowIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets left="5.0" />
+                                                         </GridPane.margin>
+                                                      </Text>
+                                                      <Spinner fx:id="wheelbaseSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="2.0" top="2.0" />
+                                                         </GridPane.margin>
+                                                      </Spinner>
+                                                      <Spinner fx:id="frontTrackSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="2.0" top="2.0" />
+                                                         </GridPane.margin>
+                                                      </Spinner>
+                                                      <Spinner fx:id="rearTrackSpinner" editable="true" initialValue="0.0" layoutX="130.0" layoutY="42.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="2.0" top="2.0" />
+                                                         </GridPane.margin>
+                                                      </Spinner>
+                                                      <Spinner fx:id="weightSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="2.0" top="2.0" />
+                                                         </GridPane.margin>
+                                                      </Spinner>
+                                                      <Spinner fx:id="chassisStiffnessSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                         <GridPane.margin>
+                                                            <Insets bottom="2.0" top="2.0" />
+                                                         </GridPane.margin>
+                                                      </Spinner>
+                                                   </children>
+                                                </GridPane>
+                                                <VBox>
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Center Of Gravity">
+                                                         <VBox.margin>
+                                                            <Insets left="5.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                      <GridPane>
+                                                        <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="34.0" prefWidth="120.66666412353516" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.0" minWidth="68.0" prefWidth="69.33333587646484" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                            <RowConstraints vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="X Position:">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text layoutX="10.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Y Position:" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Text layoutX="10.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Z Position:" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets left="20.0" />
+                                                               </GridPane.margin>
+                                                            </Text>
+                                                            <Spinner fx:id="cogXSpinner" editable="true" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="cogYSpinner" editable="true" initialValue="0.0" layoutX="64.0" layoutY="13.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                            <Spinner fx:id="cogZSpinner" editable="true" initialValue="0.0" layoutX="10.0" layoutY="13.0" max="1000" min="-1000" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                               <GridPane.margin>
+                                                                  <Insets bottom="2.0" top="2.0" />
+                                                               </GridPane.margin>
+                                                            </Spinner>
+                                                         </children>
+                                                      </GridPane>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                </content>
+                              </TitledPane>
+                          </panes>
+                        </Accordion>
+                     </children>
+                  </VBox>
+               </children>
+        </AnchorPane>
+        
+        <AnchorPane id="Content" fx:id="renderView" minHeight="0.0" />
+        
+        <AnchorPane fx:id="rightView" maxWidth="200.0" minHeight="0.0" prefWidth="210.0">
+               <children>
+                  <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Accordion prefWidth="210.0">
+                          <panes>
+                            <TitledPane animated="false" prefWidth="210.0" text="Options">
+                              <content>
+                                    <ScrollPane hbarPolicy="NEVER" prefWidth="210.0">
+                                       <content>
+                                          <GridPane prefWidth="190.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="141.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.0" minWidth="10.0" prefWidth="49.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Offset Updates Track" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tire Updates Ride Height" GridPane.rowIndex="1" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="2" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="3" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="4" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="5" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="6" />
+                                                <CheckBox fx:id="offsetUpdatesTrack" mnemonicParsing="false" GridPane.columnIndex="1" />
+                                                <CheckBox fx:id="tireUpdatesRideHeight" layoutX="151.0" layoutY="17.0" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                             </children>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" prefWidth="210.0" text="Rendering">
+                              <content>
+                                    <ScrollPane prefWidth="210.0">
+                                       <content>
+                                          <GridPane prefWidth="190.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="119.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.33331298828125" minWidth="10.0" prefWidth="71.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Render Increments" />
+                                                <Spinner fx:id="renderIncrementsSpinner" initialValue="0.0" max="1000" min="-1000" GridPane.columnIndex="1" />
+                                             </children>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" prefWidth="210.0" text="Todo">
+                              <content>
+                                    <ScrollPane prefWidth="210.0">
+                                       <content>
+                                          <GridPane prefWidth="190.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                              </content>
+                            </TitledPane>
+                          </panes>
+                        </Accordion>
+                        <Button fx:id="testButton" mnemonicParsing="false" onMouseClicked="#testButton" text="Button" />
+                     </children>
+                  </VBox>
+               </children>
+        </AnchorPane>
+      
+      </items>
+    </SplitPane>
+    
+    <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+      <children>
+        <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+          <font>
+            <Font size="11.0" fx:id="x3" />
+          </font>
+          <textFill>
+            <Color red="0.625" green="0.625" blue="0.625" fx:id="x4" />
+          </textFill>
+        </Label>
+        <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+        <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
+      </children>
+      <padding>
+        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+      </padding>
+    </HBox>
+  </children>
+</VBox>
